@@ -1,20 +1,20 @@
 { audio-plugins, nixpkgs, nixpkgs-unstable, master-config, ... }:
 let
-  hardware = "laptop";
+  hardware = "pc";
 
   # unfree packages that i explicitly use
   allowedUnfree = [
     "spotify-unwrapped"
     "reaper"
     "slack"
-    # "steam"
-    # "steam-original"
+    "steam"
+    "steam-original"
   ];
 
 
   system = "x86_64-linux";
   username = "argus";
-  hostname = "evil";
+  hostname = "mutant";
 
   plymouth = let name = "rings"; in
     {
@@ -50,15 +50,20 @@ let
     # "-fcx-fortran-rules"
   ];
 
+  optimizedPackages = [
+    "kitty"
+  ];
+
   # optimizations --------------------------------------------------------
   # architechtures include:
   # x86-64-v2 x86-64-v3 x86-64-v4 tigerlake
   arch = {
     gcc = {
-      arch = "tigerlake";
-      tune = "tigerlake";
+      arch = "znver1";
+      tune = "znver1";
     };
   };
+
   optimizedStdenv = pkgsToOptimize:
     let
       mkStdenv = march: stdenv:
@@ -72,7 +77,7 @@ let
         pkgsToOptimize.impureUseNativeOptimizations
           (pkgsToOptimize.stdenvAdapters.withCFlags USE stdenv);
 
-      optimizedStdenv = mkStdenv arch.gcc.arch pkgsToOptimize.stdenv;
+      optimizedGccStdenv = mkStdenv arch.gcc.arch pkgsToOptimize.stdenv;
       optimizedClangStdenv =
         mkStdenv arch.gcc.arch pkgsToOptimize.llvmPackages_14.stdenv;
 
@@ -81,13 +86,33 @@ let
                 forfeiting reproducibility"
           mkNativeStdenv
           pkgsToOptimize.llvmPackages_14.stdenv;
-      optimizedNativeStdenv =
+      optimizedNativeGccStdenv =
         pkgs.lib.warn "using native optimizations, \
                 forfeiting reproducibility"
           mkNativeStdenv
           pkgsToOptimize.stdenv;
     in
-    optimizedStdenv;
+    optimizedClangStdenv;
+
+  # function to override a package and all of its dependencies with the
+  # optimized stdenv
+  optimizePackage = package: packageSet:
+    let
+      newStdenv = optimizedStdenv packageSet;
+    in
+    (package.override { stdenv = newStdenv; }).overrideAttrs
+      (old: {
+        nativeBuildInputs = map
+          (x: (x.override { stdenv = newStdenv; }))
+          old.nativeBuildInputs;
+        buildInputs = map
+          (x: (x.override { stdenv = newStdenv; }))
+          old.buildInputs;
+      });
+
+  createOptimizedOverlay = packageName: (self: super: {
+    ${packageName} = optimizePackage super.${packageName} super;
+  });
 
   pkgsInputs =
     {
@@ -95,6 +120,8 @@ let
         allowBroken = true;
         allowUnfreePredicate =
           pkg: builtins.elem (pkgs.lib.getName pkg) allowedUnfree;
+      } // nixpkgs.lib.optionalAttrs useFlags {
+        replaceStdenv = { pkgs }: (optimizedStdenv pkgs);
       };
       localSystem = {
         inherit system;
@@ -110,18 +137,18 @@ let
             pkgs = super;
           } // plymouth);
         })
-      ] ++ (if useFlags then [
+      ] ++ (nixpkgs.lib.optionals useFlags [
         (self: super: {
           stdenv = optimizedStdenv super;
         })
-      ] else [ ]);
+      ]) ++ (map createOptimizedOverlay optimizedPackages);
     };
 
   pkgs = import nixpkgs pkgsInputs;
   unstable = import nixpkgs-unstable pkgsInputs;
 
   additionalPackages = with pkgs; [
-    # steam
+    steam
   ];
 in
 
