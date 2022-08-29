@@ -1,0 +1,5 @@
+# direnv
+.direnv/
+
+# built package
+result/
