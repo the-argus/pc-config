@@ -58,7 +58,7 @@
   services.xserver.displayManager.startx.enable = true;
   
   # networking ----------------------------------------------------------------
-  networking.useDHCP = lib.mkDefault true;
+  networking.useDHCP = true;
   networking.interfaces.enp39s0.useDHCP = true;
   networking.hostName = hostname; # Define your hostname.
   networking.wireless.enable = false;
