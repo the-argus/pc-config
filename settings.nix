@@ -22,10 +22,10 @@
     "steam"
   ]; # will be evaluated later
   hardwareConfiguration = [ ./hardware ];
-  usesWireless = true; # install and autostart nm-applet
-  usesBluetooth = true; # install and autostart blueman applet
-  usesMouse = false; # enables xmousepasteblock for middle click
-  hasBattery = true; # battery widget in tiling WMs
+  usesWireless = false; # install and autostart nm-applet
+  usesBluetooth = false; # install and autostart blueman applet
+  usesMouse = true; # enables xmousepasteblock for middle click
+  hasBattery = false; # battery widget in tiling WMs
   optimization = {
     arch = "znver1"; 
     useMusl = false; # use musl instead of glibc
