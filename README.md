@@ -1,2 +1,2 @@
-# pc-config
-nixos configuration for my PC tower
+# laptop-config
+nixos configuration for my laptop
