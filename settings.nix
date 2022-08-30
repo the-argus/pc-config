@@ -110,9 +110,14 @@ let
           old.buildInputs;
       });
 
-  createOptimizedOverlay = packageName: (self: super: {
-    ${packageName} = optimizePackage super.${packageName} super;
-  });
+  createOptimizedOverlay = packageName: (
+    self: super: (if
+      ((builtins.hasAttr "stdenv" (builtins.functionArgs super.${packageName}))
+        && packageName != "stdenv") then
+      {
+        ${packageName} = optimizePackage super.${packageName} super;
+      } else { })
+  );
 
   pkgsInputs =
     {
