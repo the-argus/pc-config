@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660345762,
-        "narHash": "sha256-/AxkTJAYUH1ltCTS+xC3N1n33Bny2ElHKQrF0q3nPfs=",
+        "lastModified": 1662123568,
+        "narHash": "sha256-p8yC2eZXhIaO6D7qa5mpCacJLgoKp29n/4GFW55+lzY=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "61a605b102af286a2e60abe2c7d65d0c14a0d8a7",
+        "rev": "f59b7b064f0b99f832248e7122feef8b67664df6",
         "type": "github"
       },
       "original": {
@@ -308,11 +308,11 @@
         "webcord": "webcord"
       },
       "locked": {
-        "lastModified": 1662035668,
-        "narHash": "sha256-S54yAD8tj5Pz1NIch6JulptO9TvDirjMWvuRIOwK4PQ=",
+        "lastModified": 1662174830,
+        "narHash": "sha256-5ZwsVEL0yN6fuP9DeoNDzlioZ9vPsl9xT/jRft7A1IA=",
         "owner": "the-argus",
         "repo": "nixsys",
-        "rev": "e485adc6947ac0db6d4af8e43f07d6f8a03c48c8",
+        "rev": "b58ff9a8689c8b1f45a711ce2d840c8ae131058f",
         "type": "github"
       },
       "original": {
@@ -369,11 +369,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1662025319,
-        "narHash": "sha256-ZJlBQ7jXynq4+Jg9+DgOe8FJG8sDIeFFYP3V3K98KUs=",
+        "lastModified": 1662099760,
+        "narHash": "sha256-MdZLCTJPeHi/9fg6R9fiunyDwP3XHJqDd51zWWz9px0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b82ccafb54163ab9024e893e578d840577785fea",
+        "rev": "67e45078141102f45eff1589a831aeaa3182b41e",
         "type": "github"
       },
       "original": {
