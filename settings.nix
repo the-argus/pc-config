@@ -20,6 +20,7 @@
   additionalModules = [ audio-plugins.homeManagerModule ];
   additionalUserPackages = [
     "steam"
+    "jre8"
   ]; # will be evaluated later
   hardwareConfiguration = [ ./hardware ];
   usesWireless = false; # install and autostart nm-applet
