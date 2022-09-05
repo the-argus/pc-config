@@ -9,6 +9,7 @@
     "reaper"
     "slack"
     "steam" "steam-original"
+    "discord"
   ];
   plymouth = let name = "rings"; in
     {
