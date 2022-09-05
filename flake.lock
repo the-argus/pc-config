@@ -308,11 +308,11 @@
         "webcord": "webcord"
       },
       "locked": {
-        "lastModified": 1662340997,
-        "narHash": "sha256-3GonHHTND7sPG0C+XEWGBf0nw8PxhTzHw3+wkYKae4M=",
+        "lastModified": 1662349799,
+        "narHash": "sha256-9nwHWpvutkby8i0cY500rwmt2pShBWI39yDoCUyic+w=",
         "owner": "the-argus",
         "repo": "nixsys",
-        "rev": "0922f4d2d6d77d249012b7b9c2f591c6e11e9bb2",
+        "rev": "f53dec546849f63756fe9a009e1c096739115297",
         "type": "github"
       },
       "original": {
