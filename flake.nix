@@ -12,6 +12,7 @@
       url = "github:the-argus/nixsys";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs-unstable";
+      inputs.webcord.url = "github:the-argus/webcord-flake";
     };
   };
 
