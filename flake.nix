@@ -16,25 +16,23 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , audio-plugins
-    , master-config
-    }@inputs:
-    let
-      settings = import ./settings.nix {
-        inherit audio-plugins nixpkgs nixpkgs-unstable master-config;
-      };
-    in
-    {
-      nixosConfigurations = master-config.createNixosConfiguration settings;
-      homeConfigurations = {
-        "${settings.username}" =
-          (master-config.createHomeConfigurations settings);
-      };
-      devShell."x86_64-linux" =
-        (master-config.finalizeSettings settings).pkgs.mkShell { };
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    audio-plugins,
+    master-config,
+  } @ inputs: let
+    settings = import ./settings.nix {
+      inherit audio-plugins nixpkgs nixpkgs-unstable master-config;
     };
+  in {
+    nixosConfigurations = master-config.createNixosConfiguration settings;
+    homeConfigurations = {
+      "${settings.username}" =
+        master-config.createHomeConfigurations settings;
+    };
+    devShell."x86_64-linux" =
+      (master-config.finalizeSettings settings).pkgs.mkShell {};
+  };
 }

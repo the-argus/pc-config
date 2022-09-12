@@ -1,15 +1,21 @@
-{ config, pkgs, plymouth, hostname, ... }:
 {
+  config,
+  pkgs,
+  plymouth,
+  hostname,
+  username,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
-  
+
   boot = {
-    kernelParams = [ "nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" ];
+    kernelParams = ["nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3"];
     loader = {
       efi = {
         efiSysMountPoint = "/boot/efi";
-	canTouchEfiVariables = true;
+        canTouchEfiVariables = true;
       };
       systemd-boot.enable = true;
 
@@ -21,12 +27,12 @@
         efiSupport = true;
         useOSProber = true;
         extraEntries = ''
-	  menuentry "Reboot" {
-	  	  reboot
-	  }
-	  menuentry "Poweroff" {
-		  halt
-	  }
+          menuentry "Reboot" {
+          	  reboot
+          }
+          menuentry "Poweroff" {
+           halt
+          }
         '';
       };
     };
@@ -34,15 +40,15 @@
     initrd.verbose = false;
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.plymouth-themes-package ];
+      themePackages = [pkgs.plymouth-themes-package];
       theme = plymouth.themeName;
     };
   };
 
   # makes plymouth wait 5 seconds while playing
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
-  
-  # desktops ------------------------------------------------------------------  
+
+  # desktops ------------------------------------------------------------------
   # programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
   desktops = {
     enable = true;
@@ -54,19 +60,29 @@
     gnome.enable = true;
     # plasma.enable = true;
   };
-  
+
   services.xserver.displayManager.startx.enable = true;
 
-  services.pipewire.package = (import (pkgs.fetchgit {
-    url = "https://github.com/K900/nixpkgs";
-    rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
-    sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
-  }) { system = "x86_64-linux"; }).pipewire;
-  
+  services.pipewire.package =
+    (import (pkgs.fetchgit {
+      url = "https://github.com/K900/nixpkgs";
+      rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
+      sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
+    }) {system = "x86_64-linux";})
+    .pipewire;
+
   # networking ----------------------------------------------------------------
   networking.interfaces.enp39s0.useDHCP = true;
   networking.hostName = hostname; # Define your hostname.
   networking.wireless.enable = false;
+
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+  };
+  users.users.${username}.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJt9P8Vba+rp/5Rw/BmP1LcUGV03QlFaH8Wf6wKwqEuV i.mcfarlane2002@gmail.com"
+  ];
 
   # display -------------------------------------------------------------------
   hardware.opengl = {
@@ -88,7 +104,7 @@
   hardware.openrazer.enable = true;
 
   environment.systemPackages = with pkgs; [
-	razergenie
+    razergenie
   ];
 
   system.stateVersion = "22.05"; # Did you read the comment?

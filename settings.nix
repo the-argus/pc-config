@@ -1,5 +1,10 @@
-{ audio-plugins, nixpkgs, nixpkgs-unstable, master-config, ... }:
 {
+  audio-plugins,
+  nixpkgs,
+  nixpkgs-unstable,
+  master-config,
+  ...
+}: {
   system = "x86_64-linux";
   username = "argus";
   hostname = "mutant";
@@ -8,29 +13,31 @@
     "spotify-unwrapped"
     "reaper"
     "slack"
-    "steam" "steam-original"
+    "steam"
+    "steam-original"
     "discord"
   ];
-  plymouth = let name = "rings"; in
-    {
-      themeName = name;
-      themePath = "pack_4/${name}";
-    };
-  extraExtraSpecialArgs = { inherit (audio-plugins) mpkgs; };
-  extraSpecialArgs = { };
-  additionalModules = [ audio-plugins.homeManagerModule ];
+  plymouth = let
+    name = "rings";
+  in {
+    themeName = name;
+    themePath = "pack_4/${name}";
+  };
+  extraExtraSpecialArgs = {inherit (audio-plugins) mpkgs;};
+  extraSpecialArgs = {};
+  additionalModules = [audio-plugins.homeManagerModule];
   additionalUserPackages = [
     "steam"
     "jre8"
   ]; # will be evaluated later
-  hardwareConfiguration = [ ./hardware ];
+  hardwareConfiguration = [./hardware];
   terminal = "kitty";
   usesWireless = false; # install and autostart nm-applet
   usesBluetooth = false; # install and autostart blueman applet
   usesMouse = true; # enables xmousepasteblock for middle click
   hasBattery = false; # battery widget in tiling WMs
   optimization = {
-    arch = "znver1"; 
+    arch = "znver1";
     useMusl = false; # use musl instead of glibc
     useFlags = false; # use USE
     useClang = false; # cland stdenv
