@@ -48,11 +48,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662956221,
-        "narHash": "sha256-j6N0Him9h20cbMLftz3DgwvbBJrTwWSwr9Y3pJA5O3g=",
+        "lastModified": 1662956617,
+        "narHash": "sha256-U554KNpjOWLb5Y6+JPj45FM9Cegb+Dh8dql2qs2Vu48=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "f5a3ead8a937e3f1755194be2b364d33e29809c1",
+        "rev": "6582b363ba6eabcb308c3c50070531b733a5d59e",
         "type": "github"
       },
       "original": {
@@ -69,11 +69,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662956221,
-        "narHash": "sha256-j6N0Him9h20cbMLftz3DgwvbBJrTwWSwr9Y3pJA5O3g=",
+        "lastModified": 1662956617,
+        "narHash": "sha256-U554KNpjOWLb5Y6+JPj45FM9Cegb+Dh8dql2qs2Vu48=",
         "owner": "the-argus",
         "repo": "audio-plugins-nix",
-        "rev": "f5a3ead8a937e3f1755194be2b364d33e29809c1",
+        "rev": "6582b363ba6eabcb308c3c50070531b733a5d59e",
         "type": "github"
       },
       "original": {
@@ -307,11 +307,11 @@
         "webcord": "webcord"
       },
       "locked": {
-        "lastModified": 1662956270,
-        "narHash": "sha256-3xz5/wFSuF6ruvDAjh3Y6ABLgRyDbn1IaLG33MelkbE=",
+        "lastModified": 1662956642,
+        "narHash": "sha256-eSF/sNAAKhjnRT2Yq/mdt0OGKhMnxiCLpfeEJaNvkFI=",
         "owner": "the-argus",
         "repo": "nixsys",
-        "rev": "016037fedf652e896c4b941b79d46d13318b5e0e",
+        "rev": "8e24803f82a5b49578149a4528054f7c7ead710b",
         "type": "github"
       },
       "original": {
