@@ -24,6 +24,7 @@
     "jre8"
   ]; # will be evaluated later
   hardwareConfiguration = [ ./hardware ];
+  terminal = "kitty";
   usesWireless = false; # install and autostart nm-applet
   usesBluetooth = false; # install and autostart blueman applet
   usesMouse = true; # enables xmousepasteblock for middle click
