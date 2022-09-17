@@ -16,7 +16,9 @@
     "steam"
     "steam-original"
     "discord"
+    "ue4"
   ];
+  allowBroken = false;
   plymouth = let
     name = "rings";
   in {
@@ -29,6 +31,10 @@
   additionalUserPackages = [
     "steam"
     "jre8"
+    # {
+    #   set = "remotebuild";
+    #   package = "ue4";
+    # }
   ]; # will be evaluated later
   hardwareConfiguration = [./hardware];
   terminal = "kitty";
@@ -66,4 +72,19 @@
       # "-fcx-fortran-rules"
     ];
   };
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "rpmc.duckdns.org";
+        systems = ["aarch64-linux"];
+        sshUser = "servers";
+        sshKey = "/home/argus/.ssh/id_ed25519";
+        supportedFeatures = ["big-parallel"];
+        maxJobs = 4;
+        speedFactor = 2;
+      }
+    ];
+  };
+  additionalSystemPackages = [];
 }
