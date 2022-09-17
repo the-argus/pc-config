@@ -31,10 +31,10 @@
   additionalUserPackages = [
     "steam"
     "jre8"
-    # {
-    #   set = "remotebuild";
-    #   package = "ue4";
-    # }
+    {
+      set = "ue4-patched";
+      package = "ue4";
+    }
   ]; # will be evaluated later
   hardwareConfiguration = [./hardware];
   terminal = "kitty";
