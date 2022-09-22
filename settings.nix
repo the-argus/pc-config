@@ -20,10 +20,10 @@
   ];
   allowBroken = false;
   plymouth = let
-    name = "rings";
+    name = "circuit";
   in {
     themeName = name;
-    themePath = "pack_4/${name}";
+    themePath = "pack_1/${name}";
   };
   extraExtraSpecialArgs = {inherit (audio-plugins) mpkgs;};
   extraSpecialArgs = {};
@@ -32,10 +32,42 @@
     "steam"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = [];
+  additionalOverlays = [
+    (self: super: let
+      src = super.fetchgit {
+        url = "https://github.com/xanmod/linux";
+        rev = "5cf14a5e02b970855983958aa992e19b15c01840";
+        sha256 = "0nd1callf7hlixdifi3dyfs5jpnrypc1lnxk2bqbyk768mlpfkjb";
+      };
+      version = "5.19.9";
+      override = nixpkgs.lib.attrsets.recursiveUpdate;
+    in {
+      linuxKernel = override super.linuxKernel {
+        kernels = {
+          linux_xanmod_latest = super.linuxKernel.manualConfig {
+            stdenv = super.gccStdenv;
+            inherit src version;
+            modDirVersion = "${version}-xanmod1-${super.lib.strings.toUpper hostname}";
+            inherit (super) lib;
+            configfile = super.callPackage ./hardware/kernelconfig.nix {
+              inherit hostname;
+            };
+            allowImportFromDerivation = true;
+          };
+        };
+      };
+    })
+  ];
   hardwareConfiguration = [./hardware];
   packageSelections = {
-    remotebuild = [];
+    remotebuild = [
+      "linuxPackages_latest"
+      "linuxPackages_zen"
+      "linuxPackages_xanmod_latest"
+      "grub"
+      "plymouth"
+      "starship"
+    ];
     unstable = [];
   };
   terminal = "kitty";
@@ -88,4 +120,12 @@
     ];
   };
   additionalSystemPackages = [];
+  remotebuildOverrides = {
+    optimization = {
+      useMusl = true;
+      useFlags = true;
+      useClang = true;
+    };
+  };
+  unstableOverrides = {};
 }
