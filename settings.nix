@@ -60,9 +60,9 @@
       # "linuxPackages_latest"
       # "linuxPackages_zen"
       # "linuxPackages_xanmod_latest"
-      "grub"
-      "plymouth"
-      "starship"
+      # "grub"
+      # "plymouth"
+      # "starship"
     ];
     unstable = [
       "alejandra"
