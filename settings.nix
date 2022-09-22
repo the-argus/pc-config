@@ -61,12 +61,12 @@
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
-      "linuxPackages_latest"
-      "linuxPackages_zen"
-      "linuxPackages_xanmod_latest"
-      "grub"
-      "plymouth"
-      "starship"
+      # "linuxPackages_latest"
+      # "linuxPackages_zen"
+      # "linuxPackages_xanmod_latest"
+      # "grub"
+      # "plymouth"
+      # "starship"
     ];
     unstable = [];
   };
@@ -75,6 +75,7 @@
   usesBluetooth = false; # install and autostart blueman applet
   usesMouse = true; # enables xmousepasteblock for middle click
   hasBattery = false; # battery widget in tiling WMs
+  usesEthernet = true;
   optimization = {
     arch = "znver1";
     useMusl = false; # use musl instead of glibc
