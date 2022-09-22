@@ -31,12 +31,13 @@
   additionalUserPackages = [
     "steam"
     "jre8"
-    {
-      set = "ue4-patched";
-      package = "ue4";
-    }
   ]; # will be evaluated later
+  additionalOverlays = [];
   hardwareConfiguration = [./hardware];
+  packageSelections = {
+    remotebuild = [];
+    unstable = [];
+  };
   terminal = "kitty";
   usesWireless = false; # install and autostart nm-applet
   usesBluetooth = false; # install and autostart blueman applet
