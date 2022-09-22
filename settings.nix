@@ -4,7 +4,7 @@
   nixpkgs-unstable,
   master-config,
   ...
-}: {
+}: rec {
   system = "x86_64-linux";
   username = "argus";
   hostname = "mutant";
