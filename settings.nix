@@ -34,16 +34,29 @@
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: let
-      src = super.linuxKernel.kernels.linux_xanmod_latest.src;
-      version = "5.19.1";
+      basekernelsuffix = "xanmod_latest";
+      dirVersionNames = {
+        xanmod_latest = "xanmod";
+      };
+      dirVersionName =
+        if builtins.hasAttr basekernelsuffix dirVersionNames
+        then dirVersionNames.${basekernelsuffix}
+        else basekernelsuffix;
+      basekernel = "linux${
+        if basekernelsuffix == ""
+        then ""
+        else "_"
+      }${basekernelsuffix}";
+      src = super.linuxKernel.kernels.${basekernel}.src;
+      version = super.linuxKernel.kernels.${basekernel}.version;
       override = nixpkgs.lib.attrsets.recursiveUpdate;
     in {
       linuxKernel = override super.linuxKernel {
         kernels = override super.linuxKernel.kernels {
-          linux_xanmod_latest = super.linuxKernel.manualConfig {
+          ${basekernel} = super.linuxKernel.manualConfig {
             stdenv = super.gccStdenv;
             inherit src version;
-            modDirVersion = "${version}-xanmod1-${super.lib.strings.toUpper hostname}";
+            modDirVersion = "${version}-${dirVersionName}1-${super.lib.strings.toUpper hostname}";
             inherit (super) lib;
             configfile = super.callPackage ./hardware/kernelconfig.nix {
               inherit hostname;
@@ -57,14 +70,15 @@
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
-      # "linuxPackages_latest"
-      # "linuxPackages_zen"
-      # "linuxPackages_xanmod_latest"
       # "grub"
       # "plymouth"
       # "starship"
     ];
     unstable = [
+      "linuxPackages_latest"
+      "linuxPackages_zen"
+      "linuxPackages_xanmod_latest"
+      "linuxPackages_xanmod"
       "alejandra"
       "wl-color-picker"
       "heroic"
