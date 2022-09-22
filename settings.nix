@@ -34,16 +34,12 @@
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: let
-      src = super.fetchgit {
-        url = "https://github.com/xanmod/linux";
-        rev = "5cf14a5e02b970855983958aa992e19b15c01840";
-        sha256 = "0nd1callf7hlixdifi3dyfs5jpnrypc1lnxk2bqbyk768mlpfkjb";
-      };
-      version = "5.19.9";
+      src = super.linuxPackages_xanmod_latest.kernel.src;
+      version = "5.19.1";
       override = nixpkgs.lib.attrsets.recursiveUpdate;
     in {
       linuxKernel = override super.linuxKernel {
-        kernels = {
+        kernels = override super.linuxKernel.kernels {
           linux_xanmod_latest = super.linuxKernel.manualConfig {
             stdenv = super.gccStdenv;
             inherit src version;
@@ -64,11 +60,21 @@
       # "linuxPackages_latest"
       # "linuxPackages_zen"
       # "linuxPackages_xanmod_latest"
-      # "grub"
-      # "plymouth"
-      # "starship"
+      "grub"
+      "plymouth"
+      "starship"
     ];
-    unstable = [];
+    unstable = [
+      "alejandra"
+      "wl-color-picker"
+      "heroic"
+      "solo2-cli"
+      "ani-cli"
+      "ungoogled-chromium"
+      "firefox"
+      "OVMFFull"
+      "kitty"
+    ];
   };
   terminal = "kitty";
   usesWireless = false; # install and autostart nm-applet

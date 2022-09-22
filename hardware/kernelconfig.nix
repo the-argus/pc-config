@@ -12,7 +12,7 @@ in
   builtins.toFile "kernelconfig" ''
     #
     # Automatically generated file; DO NOT EDIT.
-    # Linux/x86 5.19.9 Kernel Configuration
+    # Linux/x86 5.19.1 Kernel Configuration
     #
     CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.3.0"
     CONFIG_CC_IS_GCC=y
@@ -637,7 +637,6 @@ in
     CONFIG_HAVE_FUNCTION_ERROR_INJECTION=y
     CONFIG_HAVE_NMI=y
     CONFIG_TRACE_IRQFLAGS_SUPPORT=y
-    CONFIG_TRACE_IRQFLAGS_NMI_SUPPORT=y
     CONFIG_HAVE_ARCH_TRACEHOOK=y
     CONFIG_HAVE_DMA_CONTIGUOUS=y
     CONFIG_GENERIC_SMP_IDLE_THREAD=y
@@ -1193,7 +1192,7 @@ in
 
     # CONFIG_EDD is not set
     CONFIG_FIRMWARE_MEMMAP=y
-    # CONFIG_DMIID is not set
+    CONFIG_DMIID=y
     # CONFIG_DMI_SYSFS is not set
     CONFIG_DMI_SCAN_MACHINE_NON_EFI_FALLBACK=y
     # CONFIG_ISCSI_IBFT is not set
@@ -1267,6 +1266,7 @@ in
     # CONFIG_NVME_HWMON is not set
     # CONFIG_NVME_FC is not set
     # CONFIG_NVME_TCP is not set
+    # CONFIG_NVME_TARGET is not set
     # end of NVME Support
 
     #
@@ -3699,11 +3699,11 @@ in
     # CONFIG_VBOXGUEST is not set
     # CONFIG_NITRO_ENCLAVES is not set
     # CONFIG_EFI_SECRET is not set
-    CONFIG_VIRTIO_ANCHOR=y
     CONFIG_VIRTIO=y
     CONFIG_VIRTIO_PCI_LIB=y
     CONFIG_VIRTIO_PCI_LIB_LEGACY=y
     CONFIG_VIRTIO_MENU=y
+    # CONFIG_VIRTIO_HARDEN_NOTIFICATION is not set
     CONFIG_VIRTIO_PCI=y
     CONFIG_VIRTIO_PCI_LEGACY=y
     # CONFIG_VIRTIO_BALLOON is not set
@@ -3958,6 +3958,7 @@ in
     # CONFIG_SLIMBUS is not set
     # CONFIG_INTERCONNECT is not set
     # CONFIG_COUNTER is not set
+    # CONFIG_MOST is not set
     # CONFIG_PECI is not set
     # CONFIG_HTE is not set
     # end of Device Drivers
@@ -3989,6 +3990,7 @@ in
     # CONFIG_XFS_WARN is not set
     # CONFIG_XFS_DEBUG is not set
     # CONFIG_GFS2_FS is not set
+    # CONFIG_OCFS2_FS is not set
     CONFIG_BTRFS_FS=y
     CONFIG_BTRFS_FS_POSIX_ACL=y
     # CONFIG_BTRFS_FS_CHECK_INTEGRITY is not set
@@ -4064,7 +4066,10 @@ in
     CONFIG_PROC_PID_ARCH_STATUS=y
     CONFIG_KERNFS=y
     CONFIG_SYSFS=y
-    # CONFIG_TMPFS is not set
+    CONFIG_TMPFS=y
+    CONFIG_TMPFS_POSIX_ACL=y
+    CONFIG_TMPFS_XATTR=y
+    # CONFIG_TMPFS_INODE64 is not set
     CONFIG_HUGETLBFS=y
     CONFIG_HUGETLB_PAGE=y
     CONFIG_ARCH_WANT_HUGETLB_PAGE_OPTIMIZE_VMEMMAP=y
@@ -4072,7 +4077,7 @@ in
     # CONFIG_HUGETLB_PAGE_OPTIMIZE_VMEMMAP_DEFAULT_ON is not set
     CONFIG_MEMFD_CREATE=y
     CONFIG_ARCH_HAS_GIGANTIC_PAGE=y
-    # CONFIG_CONFIGFS_FS is not set
+    CONFIG_CONFIGFS_FS=m
     CONFIG_EFIVAR_FS=m
     # end of Pseudo filesystems
 
@@ -4158,6 +4163,7 @@ in
     # CONFIG_NLS_MAC_ROMANIAN is not set
     # CONFIG_NLS_MAC_TURKISH is not set
     CONFIG_NLS_UTF8=y
+    # CONFIG_DLM is not set
     # CONFIG_UNICODE is not set
     CONFIG_IO_WQ=y
     # end of File systems
@@ -4304,6 +4310,7 @@ in
     # CONFIG_CRYPTO_CRC32_PCLMUL is not set
     CONFIG_CRYPTO_XXHASH=y
     CONFIG_CRYPTO_BLAKE2B=y
+    # CONFIG_CRYPTO_BLAKE2S is not set
     # CONFIG_CRYPTO_BLAKE2S_X86 is not set
     # CONFIG_CRYPTO_CRCT10DIF is not set
     CONFIG_CRYPTO_GHASH=y
@@ -4332,6 +4339,8 @@ in
     CONFIG_CRYPTO_AES=y
     # CONFIG_CRYPTO_AES_TI is not set
     # CONFIG_CRYPTO_AES_NI_INTEL is not set
+    # CONFIG_CRYPTO_ANUBIS is not set
+    # CONFIG_CRYPTO_ARC4 is not set
     # CONFIG_CRYPTO_BLOWFISH is not set
     # CONFIG_CRYPTO_BLOWFISH_X86_64 is not set
     # CONFIG_CRYPTO_CAMELLIA is not set
@@ -4345,8 +4354,10 @@ in
     # CONFIG_CRYPTO_DES is not set
     # CONFIG_CRYPTO_DES3_EDE_X86_64 is not set
     # CONFIG_CRYPTO_FCRYPT is not set
+    # CONFIG_CRYPTO_KHAZAD is not set
     # CONFIG_CRYPTO_CHACHA20 is not set
     # CONFIG_CRYPTO_CHACHA20_X86_64 is not set
+    # CONFIG_CRYPTO_SEED is not set
     # CONFIG_CRYPTO_SERPENT is not set
     # CONFIG_CRYPTO_SERPENT_SSE2_X86_64 is not set
     # CONFIG_CRYPTO_SERPENT_AVX_X86_64 is not set
@@ -4354,6 +4365,7 @@ in
     # CONFIG_CRYPTO_SM4_GENERIC is not set
     # CONFIG_CRYPTO_SM4_AESNI_AVX_X86_64 is not set
     # CONFIG_CRYPTO_SM4_AESNI_AVX2_X86_64 is not set
+    # CONFIG_CRYPTO_TEA is not set
     # CONFIG_CRYPTO_TWOFISH is not set
     # CONFIG_CRYPTO_TWOFISH_X86_64 is not set
     # CONFIG_CRYPTO_TWOFISH_X86_64_3WAY is not set
@@ -4375,10 +4387,12 @@ in
     # CONFIG_CRYPTO_ANSI_CPRNG is not set
     # CONFIG_CRYPTO_DRBG_MENU is not set
     # CONFIG_CRYPTO_JITTERENTROPY is not set
-    # CONFIG_CRYPTO_USER_API_HASH is not set
+    CONFIG_CRYPTO_USER_API=y
+    CONFIG_CRYPTO_USER_API_HASH=y
     # CONFIG_CRYPTO_USER_API_SKCIPHER is not set
     # CONFIG_CRYPTO_USER_API_RNG is not set
     # CONFIG_CRYPTO_USER_API_AEAD is not set
+    CONFIG_CRYPTO_USER_API_ENABLE_OBSOLETE=y
     CONFIG_CRYPTO_HASH_INFO=y
     CONFIG_CRYPTO_HW=y
     # CONFIG_CRYPTO_DEV_PADLOCK is not set
@@ -4663,6 +4677,7 @@ in
     #
     # x86 Debugging
     #
+    CONFIG_TRACE_IRQFLAGS_NMI_SUPPORT=y
     CONFIG_EARLY_PRINTK_USB=y
     CONFIG_X86_VERBOSE_BOOTUP=y
     CONFIG_EARLY_PRINTK=y
