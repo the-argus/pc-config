@@ -34,7 +34,7 @@
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: let
-      src = super.linuxPackages_xanmod_latest.kernel.src;
+      src = super.linuxKernel.kernels.linux_xanmod_latest.src;
       version = "5.19.1";
       override = nixpkgs.lib.attrsets.recursiveUpdate;
     in {
