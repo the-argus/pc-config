@@ -32,15 +32,23 @@
     "steam"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = [
+  additionalOverlays = [];
+  dummy = [
     (self: super: let
-      basekernelsuffix = "xanmod_latest";
+      basekernelsuffix = "5_15";
       dirVersionNames = {
         xanmod_latest = "xanmod";
+        "5_15" = "";
+        "5_19" = "";
       };
       dirVersionName =
         if builtins.hasAttr basekernelsuffix dirVersionNames
-        then dirVersionNames.${basekernelsuffix}
+        then
+          (
+            if dirVersionNames.${basekernelsuffix} == ""
+            then ""
+            else "-${dirVersionNames.${basekernelsuffix}}1"
+          )
         else basekernelsuffix;
       basekernel = "linux${
         if basekernelsuffix == ""
@@ -56,7 +64,7 @@
           ${basekernel} = super.linuxKernel.manualConfig {
             stdenv = super.gccStdenv;
             inherit src version;
-            modDirVersion = "${version}-${dirVersionName}1-${super.lib.strings.toUpper hostname}";
+            modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
             inherit (super) lib;
             configfile = super.callPackage ./hardware/kernelconfig.nix {
               inherit hostname;
