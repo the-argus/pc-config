@@ -33,13 +33,8 @@ in rec {
     "steam"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = let
-    kernel = import ./hardware/kernel-overlay.nix {
-      inherit override hostname;
-      basekernelsuffix = "xanmod_latest";
-    };
-  in [
-    # kernel
+  additionalOverlays = [
+    # (import ./hardware/kernel-overlay.nix {inherit override hostname;})
   ];
   hardwareConfiguration = [./hardware];
   packageSelections = {

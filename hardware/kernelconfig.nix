@@ -373,7 +373,6 @@ in
     CONFIG_HPET_EMULATE_RTC=y
     CONFIG_DMI=y
     # CONFIG_GART_IOMMU is not set
-    CONFIG_BOOT_VESA_SUPPORT=y
     CONFIG_NR_CPUS_RANGE_BEGIN=2
     CONFIG_NR_CPUS_RANGE_END=512
     CONFIG_NR_CPUS_DEFAULT=64
@@ -496,9 +495,7 @@ in
     CONFIG_PM=y
     # CONFIG_PM_DEBUG is not set
     CONFIG_PM_CLK=y
-    CONFIG_PM_GENERIC_DOMAINS=y
     # CONFIG_WQ_POWER_EFFICIENT_DEFAULT is not set
-    CONFIG_PM_GENERIC_DOMAINS_SLEEP=y
     # CONFIG_ENERGY_MODEL is not set
     CONFIG_ARCH_SUPPORTS_ACPI=y
     CONFIG_ACPI=y
@@ -903,6 +900,7 @@ in
     # GUP_TEST needs to have DEBUG_FS enabled
     #
     CONFIG_ARCH_HAS_PTE_SPECIAL=y
+    CONFIG_MAPPING_DIRTY_HELPERS=y
     CONFIG_SECRETMEM=y
     # CONFIG_ANON_VMA_NAME is not set
     # CONFIG_USERFAULTFD is not set
@@ -1232,8 +1230,7 @@ in
     CONFIG_DMI_SCAN_MACHINE_NON_EFI_FALLBACK=y
     # CONFIG_ISCSI_IBFT is not set
     # CONFIG_FW_CFG_SYSFS is not set
-    CONFIG_SYSFB=y
-    CONFIG_SYSFB_SIMPLEFB=y
+    # CONFIG_SYSFB_SIMPLEFB is not set
     # CONFIG_GOOGLE_FIRMWARE is not set
 
     #
@@ -2590,7 +2587,6 @@ in
     #
     # Multifunction device drivers
     #
-    CONFIG_MFD_CORE=y
     # CONFIG_MFD_AS3711 is not set
     # CONFIG_PMIC_ADP5520 is not set
     # CONFIG_MFD_AAT2870_CORE is not set
@@ -3035,7 +3031,7 @@ in
     #
     # ACP (Audio CoProcessor) Configuration
     #
-    CONFIG_DRM_AMD_ACP=y
+    # CONFIG_DRM_AMD_ACP is not set
     # end of ACP (Audio CoProcessor) Configuration
 
     #
@@ -3047,12 +3043,14 @@ in
     # CONFIG_DRM_AMD_DC_SI is not set
     # end of Display Engine Configuration
 
-    CONFIG_HSA_AMD=y
+    # CONFIG_HSA_AMD is not set
     # CONFIG_DRM_NOUVEAU is not set
     # CONFIG_DRM_I915 is not set
     # CONFIG_DRM_VGEM is not set
     # CONFIG_DRM_VKMS is not set
-    # CONFIG_DRM_VMWGFX is not set
+    CONFIG_DRM_VMWGFX=y
+    # CONFIG_DRM_VMWGFX_FBCON is not set
+    # CONFIG_DRM_VMWGFX_MKSSTATS is not set
     # CONFIG_DRM_GMA500 is not set
     # CONFIG_DRM_UDL is not set
     # CONFIG_DRM_AST is not set
@@ -3079,7 +3077,7 @@ in
     # CONFIG_DRM_BOCHS is not set
     # CONFIG_DRM_CIRRUS_QEMU is not set
     # CONFIG_DRM_GM12U320 is not set
-    CONFIG_DRM_SIMPLEDRM=y
+    # CONFIG_DRM_SIMPLEDRM is not set
     # CONFIG_DRM_VBOXVIDEO is not set
     # CONFIG_DRM_GUD is not set
     # CONFIG_DRM_SSD130X is not set
@@ -3155,6 +3153,7 @@ in
     # CONFIG_FB_VIRTUAL is not set
     # CONFIG_FB_METRONOME is not set
     # CONFIG_FB_MB862XX is not set
+    # CONFIG_FB_SIMPLE is not set
     # CONFIG_FB_SSD1307 is not set
     # CONFIG_FB_SM712 is not set
     # end of Frame buffer Devices
@@ -3162,8 +3161,7 @@ in
     #
     # Backlight & LCD device support
     #
-    CONFIG_LCD_CLASS_DEVICE=y
-    # CONFIG_LCD_PLATFORM is not set
+    # CONFIG_LCD_CLASS_DEVICE is not set
     CONFIG_BACKLIGHT_CLASS_DEVICE=y
     # CONFIG_BACKLIGHT_KTD253 is not set
     # CONFIG_BACKLIGHT_APPLE is not set
