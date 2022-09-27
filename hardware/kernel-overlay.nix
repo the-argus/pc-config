@@ -1,5 +1,4 @@
-{override, hostname, ...}: (self: super: let
-  basekernelsuffix = "xanmod_latest";
+{override, hostname, basekernelsuffix, ...}: (self: super: let
   dirVersionNames = {
     xanmod_latest = "xanmod";
     "5_15" = "";
