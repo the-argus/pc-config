@@ -69,26 +69,6 @@
     "audio-plugins": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1663031784,
-        "narHash": "sha256-fCJYz1STMiZj4kKJS3Bey1v5Hv1ax9LbBxVs655k3MM=",
-        "owner": "the-argus",
-        "repo": "audio-plugins-nix",
-        "rev": "872dfa5b5f2fe2be4f34cdc1cee8b5b6f0038de7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "the-argus",
-        "repo": "audio-plugins-nix",
-        "type": "github"
-      }
-    },
-    "audio-plugins_2": {
-      "inputs": {
-        "nixpkgs": [
           "master-config",
           "nixpkgs"
         ]
@@ -489,7 +469,7 @@
     "master-config": {
       "inputs": {
         "arkenfox-userjs": "arkenfox-userjs",
-        "audio-plugins": "audio-plugins_2",
+        "audio-plugins": "audio-plugins",
         "chrome-extensions": "chrome-extensions",
         "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",
@@ -731,7 +711,6 @@
     },
     "root": {
       "inputs": {
-        "audio-plugins": "audio-plugins",
         "master-config": "master-config",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable"
@@ -832,11 +811,11 @@
         "webcord": "webcord_2"
       },
       "locked": {
-        "lastModified": 1662947843,
-        "narHash": "sha256-GA4MY085YU98zczfnsW6uCtaaqP/pE2wL6Ed/r0HCTo=",
-        "owner": "the-argus",
+        "lastModified": 1663692072,
+        "narHash": "sha256-W9y2ow4tkjFhIsPHvUuaOvawxRgxvr9hb6IMwpMoFlM=",
+        "owner": "fufexan",
         "repo": "webcord-flake",
-        "rev": "5212827a7c36aec2171726dd2da42d68eed06dbc",
+        "rev": "9578b63fe42746fdbf80a0364781946c8c35aca9",
         "type": "github"
       },
       "original": {

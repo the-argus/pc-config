@@ -10,8 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-  programs.steam.enable = true;
-
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = ["nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3"];
@@ -94,9 +92,15 @@
 
   # display -------------------------------------------------------------------
   hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = false;
     extraPackages = with pkgs; [
     ];
+    extraPackages32 = with pkgs.pkgsi686Linux;
+      [libva libvdpau-va-gl vaapiVdpau]
+      ++ lib.optionals config.services.pipewire.enable [pipewire];
   };
+  hardware.pulseaudio.support32Bit = config.hardware.pulseaudio.enable;
 
   #	services.xserver.videoDrivers = [ "amdgpu" ];
   services.xserver = {
