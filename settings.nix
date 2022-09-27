@@ -32,10 +32,9 @@
     "steam"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = [];
-  dummy = [
+  additionalOverlays = [
     (self: super: let
-      basekernelsuffix = "5_15";
+      basekernelsuffix = "5_19";
       dirVersionNames = {
         xanmod_latest = "xanmod";
         "5_15" = "";
@@ -61,16 +60,20 @@
     in {
       linuxKernel = override super.linuxKernel {
         kernels = override super.linuxKernel.kernels {
-          ${basekernel} = super.linuxKernel.manualConfig {
-            stdenv = super.gccStdenv;
-            inherit src version;
-            modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
-            inherit (super) lib;
-            configfile = super.callPackage ./hardware/kernelconfig.nix {
-              inherit hostname;
-            };
-            allowImportFromDerivation = true;
-          };
+          ${basekernel} =
+            (super.linuxKernel.manualConfig {
+              stdenv = super.gccStdenv;
+              inherit src version;
+              modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
+              inherit (super) lib;
+              configfile = super.callPackage ./hardware/kernelconfig.nix {
+                inherit hostname;
+              };
+              allowImportFromDerivation = true;
+            })
+            .overrideAttrs (oa: {
+              nativeBuildInputs = (oa.nativeBuildInputs or []) ++ [super.lz4];
+            });
         };
       };
     })
@@ -78,15 +81,18 @@
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
-      # "grub"
-      # "plymouth"
-      # "starship"
+      "starship"
+      "dash"
+      "grub"
+      "plymouth"
+      "coreutils-full"
     ];
     unstable = [
       "linuxPackages_latest"
       "linuxPackages_zen"
       "linuxPackages_xanmod_latest"
       "linuxPackages_xanmod"
+
       "alejandra"
       "wl-color-picker"
       "heroic"
@@ -95,7 +101,16 @@
       "ungoogled-chromium"
       "firefox"
       "OVMFFull"
+    ];
+    localbuild = [
+      "gnome-shell"
+      "gdm"
+      "qtile"
+      "zsh"
+      "zplug"
       "kitty"
+      "xorg"
+      "systemd"
     ];
   };
   terminal = "kitty";
@@ -112,7 +127,7 @@
     useNative = false; # native march
     # what optimizations to use (check https://github.com/fortuneteller2k/nixpkgs-f2k/blob/ca75dc2c9d41590ca29555cddfc86cf950432d5e/flake.nix#L237-L289)
     USE = [
-      # "-O3"
+      "-O3"
       "-O2"
       "-pipe"
       "-ffloat-store"
@@ -149,12 +164,24 @@
     ];
   };
   additionalSystemPackages = [];
+  name = "pkgs";
   remotebuildOverrides = {
     optimization = {
       useMusl = true;
       useFlags = true;
       useClang = true;
     };
+    name = "remotebuild";
   };
-  unstableOverrides = {};
+  unstableOverrides = {
+    name = "unstable";
+  };
+  localbuildOverrides = override remotebuildOverrides {
+    optimization = {
+      useMusl = false;
+      useFlags = true;
+      useClang = true;
+    };
+    name = "localbuild";
+  };
 }

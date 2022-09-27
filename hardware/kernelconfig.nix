@@ -928,6 +928,7 @@ in
     CONFIG_XFRM_ALGO=y
     CONFIG_XFRM_USER=y
     # CONFIG_XFRM_USER_COMPAT is not set
+    # CONFIG_XFRM_INTERFACE is not set
     # CONFIG_XFRM_SUB_POLICY is not set
     # CONFIG_XFRM_MIGRATE is not set
     # CONFIG_XFRM_STATISTICS is not set
@@ -938,12 +939,15 @@ in
     # CONFIG_IP_PNP is not set
     # CONFIG_NET_IPIP is not set
     # CONFIG_NET_IPGRE_DEMUX is not set
+    CONFIG_NET_IP_TUNNEL=m
     # CONFIG_SYN_COOKIES is not set
     # CONFIG_NET_IPVTI is not set
     # CONFIG_NET_FOU is not set
+    # CONFIG_NET_FOU_IP_TUNNELS is not set
     # CONFIG_INET_AH is not set
     # CONFIG_INET_ESP is not set
     # CONFIG_INET_IPCOMP is not set
+    CONFIG_INET_TUNNEL=m
     # CONFIG_INET_DIAG is not set
     CONFIG_TCP_CONG_ADVANCED=y
     # CONFIG_TCP_CONG_BIC is not set
@@ -968,7 +972,24 @@ in
     # CONFIG_DEFAULT_RENO is not set
     CONFIG_DEFAULT_TCP_CONG="bbr2"
     # CONFIG_TCP_MD5SIG is not set
-    # CONFIG_IPV6 is not set
+    CONFIG_IPV6=m
+    # CONFIG_IPV6_ROUTER_PREF is not set
+    # CONFIG_IPV6_OPTIMISTIC_DAD is not set
+    # CONFIG_INET6_AH is not set
+    # CONFIG_INET6_ESP is not set
+    # CONFIG_INET6_IPCOMP is not set
+    # CONFIG_IPV6_MIP6 is not set
+    # CONFIG_IPV6_VTI is not set
+    CONFIG_IPV6_SIT=m
+    # CONFIG_IPV6_SIT_6RD is not set
+    CONFIG_IPV6_NDISC_NODETYPE=y
+    # CONFIG_IPV6_TUNNEL is not set
+    # CONFIG_IPV6_MULTIPLE_TABLES is not set
+    # CONFIG_IPV6_MROUTE is not set
+    # CONFIG_IPV6_SEG6_LWTUNNEL is not set
+    # CONFIG_IPV6_SEG6_HMAC is not set
+    # CONFIG_IPV6_RPL_LWTUNNEL is not set
+    # CONFIG_IPV6_IOAM6_LWTUNNEL is not set
     # CONFIG_NETLABEL is not set
     # CONFIG_MPTCP is not set
     # CONFIG_NETWORK_SECMARK is not set
@@ -991,6 +1012,7 @@ in
     # CONFIG_X25 is not set
     # CONFIG_LAPB is not set
     # CONFIG_PHONET is not set
+    # CONFIG_6LOWPAN is not set
     # CONFIG_IEEE802154 is not set
     # CONFIG_NET_SCHED is not set
     # CONFIG_DCB is not set
@@ -1067,6 +1089,7 @@ in
     # CONFIG_PSAMPLE is not set
     # CONFIG_NET_IFE is not set
     # CONFIG_LWTUNNEL is not set
+    CONFIG_DST_CACHE=y
     CONFIG_GRO_CELLS=y
     CONFIG_NET_SELFTESTS=y
     CONFIG_FAILOVER=y
@@ -1160,10 +1183,12 @@ in
     # Firmware loader
     #
     CONFIG_FW_LOADER=y
-    CONFIG_EXTRA_FIRMWARE="amdgpu snd_hda_intel ahci xhci_pci k10temp i2c_piix4 sp5100_tco nvme r8169 rtl8192ee mac80211"
-    CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware"
+    CONFIG_FW_LOADER_PAGED_BUF=y
+    CONFIG_EXTRA_FIRMWARE=""
     # CONFIG_FW_LOADER_USER_HELPER is not set
-    # CONFIG_FW_LOADER_COMPRESS is not set
+    CONFIG_FW_LOADER_COMPRESS=y
+    CONFIG_FW_LOADER_COMPRESS_XZ=y
+    # CONFIG_FW_LOADER_COMPRESS_ZSTD is not set
     CONFIG_FW_CACHE=y
     # CONFIG_FW_UPLOAD is not set
     # end of Firmware loader
@@ -1184,7 +1209,8 @@ in
     # CONFIG_MHI_BUS_EP is not set
     # end of Bus devices
 
-    # CONFIG_CONNECTOR is not set
+    CONFIG_CONNECTOR=y
+    CONFIG_PROC_EVENTS=y
 
     #
     # Firmware Drivers
@@ -3044,6 +3070,7 @@ in
     # CONFIG_FB_ASILIANT is not set
     # CONFIG_FB_IMSTT is not set
     # CONFIG_FB_VGA16 is not set
+    # CONFIG_FB_UVESA is not set
     # CONFIG_FB_VESA is not set
     # CONFIG_FB_EFI is not set
     # CONFIG_FB_N411 is not set
