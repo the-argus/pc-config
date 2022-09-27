@@ -1,4 +1,4 @@
-(self: super: let
+{override, hostname, ...}: (self: super: let
   basekernelsuffix = "xanmod_latest";
   dirVersionNames = {
     xanmod_latest = "xanmod";
@@ -26,7 +26,7 @@ in {
           inherit src version;
           modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
           inherit (super) lib;
-          configfile = super.callPackage ./hardware/kernelconfig.nix {
+          configfile = super.callPackage ./kernelconfig.nix {
             inherit hostname;
           };
           allowImportFromDerivation = true;

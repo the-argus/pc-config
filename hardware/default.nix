@@ -39,6 +39,7 @@
     };
 
     initrd = {
+      #enable = false;
       verbose = false;
       systemd.enable = true;
       services.swraid.enable = false;

@@ -34,7 +34,7 @@ in rec {
     "jre8"
   ]; # will be evaluated later
   additionalOverlays = [
-    # (import ./hardware/kernel-overlay.nix)
+    # (import ./hardware/kernel-overlay.nix {inherit override hostname;})
   ];
   hardwareConfiguration = [./hardware];
   packageSelections = {
