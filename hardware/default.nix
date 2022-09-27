@@ -40,7 +40,12 @@
       };
     };
 
-    initrd.verbose = false;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+      services.swraid.enable = false;
+    };
+
     plymouth = {
       enable = true;
       themePackages = [pkgs.plymouth-themes-package];

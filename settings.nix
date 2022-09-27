@@ -4,7 +4,9 @@
   nixpkgs-unstable,
   master-config,
   ...
-}: rec {
+}: let
+  override = nixpkgs.lib.attrsets.recursiveUpdate;
+in rec {
   system = "x86_64-linux";
   username = "argus";
   hostname = "mutant";
@@ -56,7 +58,6 @@
       }${basekernelsuffix}";
       src = super.linuxKernel.kernels.${basekernel}.src;
       version = super.linuxKernel.kernels.${basekernel}.version;
-      override = nixpkgs.lib.attrsets.recursiveUpdate;
     in {
       linuxKernel = override super.linuxKernel {
         kernels = override super.linuxKernel.kernels {
