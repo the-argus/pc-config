@@ -36,7 +36,7 @@ in rec {
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: let
-      basekernelsuffix = "5_19";
+      basekernelsuffix = "xanmod_latest";
       dirVersionNames = {
         xanmod_latest = "xanmod";
         "5_15" = "";
@@ -51,11 +51,7 @@ in rec {
             else "-${dirVersionNames.${basekernelsuffix}}1"
           )
         else basekernelsuffix;
-      basekernel = "linux${
-        if basekernelsuffix == ""
-        then ""
-        else "_"
-      }${basekernelsuffix}";
+      basekernel = "linux_${basekernelsuffix}";
       src = super.linuxKernel.kernels.${basekernel}.src;
       version = super.linuxKernel.kernels.${basekernel}.version;
     in {
@@ -85,14 +81,17 @@ in rec {
       "starship"
       "dash"
       "grub"
-      "plymouth"
-      "coreutils-full"
     ];
     unstable = [
       "linuxPackages_latest"
       "linuxPackages_zen"
       "linuxPackages_xanmod_latest"
       "linuxPackages_xanmod"
+      {
+        set1 = "linuxKernel";
+        set2 = "kernel";
+        set3 = "xanmod_latest";
+      }
 
       "alejandra"
       "wl-color-picker"
@@ -105,6 +104,7 @@ in rec {
     ];
     localbuild = [
       "gnome-shell"
+      "plymouth"
       "gdm"
       "qtile"
       "zsh"
