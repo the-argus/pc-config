@@ -794,6 +794,8 @@ in
     CONFIG_BLK_MQ_PCI=y
     CONFIG_BLK_MQ_VIRTIO=y
     CONFIG_BLK_PM=y
+    CONFIG_BLOCK_HOLDER_DEPRECATED=y
+    CONFIG_BLK_MQ_STACKING=y
 
     #
     # IO Schedulers
@@ -1483,23 +1485,23 @@ in
     #
     # SATA SFF controllers with BMDMA
     #
-    CONFIG_ATA_PIIX=y
+    CONFIG_ATA_PIIX=m
     # CONFIG_SATA_DWC is not set
-    # CONFIG_SATA_MV is not set
-    # CONFIG_SATA_NV is not set
+    CONFIG_SATA_MV=m
+    CONFIG_SATA_NV=m
     # CONFIG_SATA_PROMISE is not set
     # CONFIG_SATA_SIL is not set
-    # CONFIG_SATA_SIS is not set
+    CONFIG_SATA_SIS=m
     # CONFIG_SATA_SVW is not set
-    # CONFIG_SATA_ULI is not set
-    # CONFIG_SATA_VIA is not set
+    CONFIG_SATA_ULI=m
+    CONFIG_SATA_VIA=m
     # CONFIG_SATA_VITESSE is not set
 
     #
     # PATA SFF controllers with BMDMA
     #
     # CONFIG_PATA_ALI is not set
-    CONFIG_PATA_AMD=y
+    # CONFIG_PATA_AMD is not set
     # CONFIG_PATA_ARTOP is not set
     # CONFIG_PATA_ATIIXP is not set
     # CONFIG_PATA_ATP867X is not set
@@ -1513,7 +1515,7 @@ in
     # CONFIG_PATA_IT8213 is not set
     # CONFIG_PATA_IT821X is not set
     # CONFIG_PATA_JMICRON is not set
-    # CONFIG_PATA_MARVELL is not set
+    CONFIG_PATA_MARVELL=m
     # CONFIG_PATA_NETCELL is not set
     # CONFIG_PATA_NINJA32 is not set
     # CONFIG_PATA_NS87415 is not set
@@ -1526,7 +1528,7 @@ in
     # CONFIG_PATA_SCH is not set
     # CONFIG_PATA_SERVERWORKS is not set
     # CONFIG_PATA_SIL680 is not set
-    # CONFIG_PATA_SIS is not set
+    CONFIG_PATA_SIS=m
     # CONFIG_PATA_TOSHIBA is not set
     # CONFIG_PATA_TRIFLEX is not set
     # CONFIG_PATA_VIA is not set
@@ -1547,7 +1549,33 @@ in
     # CONFIG_PATA_ACPI is not set
     # CONFIG_ATA_GENERIC is not set
     # CONFIG_PATA_LEGACY is not set
-    # CONFIG_MD is not set
+    CONFIG_MD=y
+    # CONFIG_BLK_DEV_MD is not set
+    # CONFIG_BCACHE is not set
+    CONFIG_BLK_DEV_DM_BUILTIN=y
+    CONFIG_BLK_DEV_DM=m
+    # CONFIG_DM_DEBUG is not set
+    # CONFIG_DM_UNSTRIPED is not set
+    # CONFIG_DM_CRYPT is not set
+    # CONFIG_DM_SNAPSHOT is not set
+    # CONFIG_DM_THIN_PROVISIONING is not set
+    # CONFIG_DM_CACHE is not set
+    # CONFIG_DM_WRITECACHE is not set
+    # CONFIG_DM_EBS is not set
+    # CONFIG_DM_ERA is not set
+    # CONFIG_DM_CLONE is not set
+    # CONFIG_DM_MIRROR is not set
+    # CONFIG_DM_RAID is not set
+    # CONFIG_DM_ZERO is not set
+    # CONFIG_DM_MULTIPATH is not set
+    # CONFIG_DM_DELAY is not set
+    # CONFIG_DM_DUST is not set
+    # CONFIG_DM_UEVENT is not set
+    # CONFIG_DM_FLAKEY is not set
+    # CONFIG_DM_VERITY is not set
+    # CONFIG_DM_SWITCH is not set
+    # CONFIG_DM_LOG_WRITES is not set
+    # CONFIG_DM_INTEGRITY is not set
     # CONFIG_TARGET_CORE is not set
     # CONFIG_FUSION is not set
 
@@ -1801,9 +1829,11 @@ in
     # Input device support
     #
     CONFIG_INPUT=y
+    CONFIG_INPUT_LEDS=m
     CONFIG_INPUT_FF_MEMLESS=y
     # CONFIG_INPUT_SPARSEKMAP is not set
     # CONFIG_INPUT_MATRIXKMAP is not set
+    CONFIG_INPUT_VIVALDIFMAP=m
 
     #
     # Userland interfaces
@@ -1822,7 +1852,7 @@ in
     CONFIG_INPUT_KEYBOARD=y
     # CONFIG_KEYBOARD_ADP5588 is not set
     # CONFIG_KEYBOARD_ADP5589 is not set
-    # CONFIG_KEYBOARD_ATKBD is not set
+    CONFIG_KEYBOARD_ATKBD=m
     # CONFIG_KEYBOARD_QT1050 is not set
     # CONFIG_KEYBOARD_QT1070 is not set
     # CONFIG_KEYBOARD_QT2160 is not set
@@ -1833,6 +1863,7 @@ in
     # CONFIG_KEYBOARD_TCA6416 is not set
     # CONFIG_KEYBOARD_TCA8418 is not set
     # CONFIG_KEYBOARD_MATRIX is not set
+    # CONFIG_KEYBOARD_LM8323 is not set
     # CONFIG_KEYBOARD_LM8333 is not set
     # CONFIG_KEYBOARD_MAX7359 is not set
     # CONFIG_KEYBOARD_MCS is not set
@@ -1842,6 +1873,7 @@ in
     # CONFIG_KEYBOARD_SAMSUNG is not set
     # CONFIG_KEYBOARD_STOWAWAY is not set
     # CONFIG_KEYBOARD_SUNKBD is not set
+    # CONFIG_KEYBOARD_TM2_TOUCHKEY is not set
     # CONFIG_KEYBOARD_XTKBD is not set
     # CONFIG_KEYBOARD_CYPRESS_SF is not set
     # CONFIG_INPUT_MOUSE is not set
@@ -1881,6 +1913,7 @@ in
     # CONFIG_INPUT_E3X0_BUTTON is not set
     CONFIG_INPUT_PCSPKR=y
     # CONFIG_INPUT_MMA8450 is not set
+    # CONFIG_INPUT_APANEL is not set
     # CONFIG_INPUT_GPIO_BEEPER is not set
     # CONFIG_INPUT_GPIO_DECODER is not set
     # CONFIG_INPUT_GPIO_VIBRA is not set
@@ -1896,10 +1929,12 @@ in
     # CONFIG_INPUT_GPIO_ROTARY_ENCODER is not set
     # CONFIG_INPUT_DA7280_HAPTICS is not set
     # CONFIG_INPUT_ADXL34X is not set
+    # CONFIG_INPUT_IMS_PCU is not set
     # CONFIG_INPUT_IQS269A is not set
     # CONFIG_INPUT_IQS626A is not set
     # CONFIG_INPUT_IQS7222 is not set
     # CONFIG_INPUT_CMA3000 is not set
+    # CONFIG_INPUT_IDEAPAD_SLIDEBAR is not set
     # CONFIG_INPUT_DRV260X_HAPTICS is not set
     # CONFIG_INPUT_DRV2665_HAPTICS is not set
     # CONFIG_INPUT_DRV2667_HAPTICS is not set
@@ -1908,8 +1943,19 @@ in
     #
     # Hardware I/O ports
     #
-    # CONFIG_SERIO is not set
+    CONFIG_SERIO=m
     CONFIG_ARCH_MIGHT_HAVE_PC_SERIO=y
+    CONFIG_SERIO_I8042=m
+    # CONFIG_SERIO_SERPORT is not set
+    # CONFIG_SERIO_CT82C710 is not set
+    CONFIG_SERIO_PCIPS2=m
+    CONFIG_SERIO_LIBPS2=m
+    # CONFIG_SERIO_RAW is not set
+    # CONFIG_SERIO_ALTERA_PS2 is not set
+    # CONFIG_SERIO_PS2MULT is not set
+    # CONFIG_SERIO_ARC_PS2 is not set
+    # CONFIG_SERIO_GPIO_PS2 is not set
+    # CONFIG_USERIO is not set
     # CONFIG_GAMEPORT is not set
     # end of Hardware I/O ports
     # end of Input device support
@@ -3311,12 +3357,16 @@ in
     # CONFIG_HID_A4TECH is not set
     # CONFIG_HID_ACCUTOUCH is not set
     # CONFIG_HID_ACRUX is not set
+    CONFIG_HID_APPLE=m
     # CONFIG_HID_APPLEIR is not set
+    # CONFIG_HID_ASUS is not set
     # CONFIG_HID_AUREAL is not set
     # CONFIG_HID_BELKIN is not set
     # CONFIG_HID_BETOP_FF is not set
-    # CONFIG_HID_CHERRY is not set
+    # CONFIG_HID_BIGBEN_FF is not set
+    CONFIG_HID_CHERRY=m
     # CONFIG_HID_CHICONY is not set
+    # CONFIG_HID_CORSAIR is not set
     # CONFIG_HID_COUGAR is not set
     # CONFIG_HID_MACALLY is not set
     # CONFIG_HID_PRODIKEYS is not set
@@ -3326,6 +3376,7 @@ in
     # CONFIG_HID_CYPRESS is not set
     # CONFIG_HID_DRAGONRISE is not set
     # CONFIG_HID_EMS_FF is not set
+    # CONFIG_HID_ELAN is not set
     # CONFIG_HID_ELECOM is not set
     # CONFIG_HID_ELO is not set
     # CONFIG_HID_EZKEY is not set
@@ -3335,6 +3386,7 @@ in
     # CONFIG_HID_GLORIOUS is not set
     # CONFIG_HID_HOLTEK is not set
     # CONFIG_HID_VIVALDI is not set
+    # CONFIG_HID_GT683R is not set
     # CONFIG_HID_KEYTOUCH is not set
     # CONFIG_HID_KYE is not set
     # CONFIG_HID_UCLOGIC is not set
@@ -3348,16 +3400,25 @@ in
     # CONFIG_HID_TWINHAN is not set
     # CONFIG_HID_KENSINGTON is not set
     # CONFIG_HID_LCPOWER is not set
-    # CONFIG_HID_LENOVO is not set
+    # CONFIG_HID_LED is not set
+    CONFIG_HID_LENOVO=m
     # CONFIG_HID_LETSKETCH is not set
+    CONFIG_HID_LOGITECH=m
+    CONFIG_HID_LOGITECH_DJ=m
+    CONFIG_HID_LOGITECH_HIDPP=m
+    # CONFIG_LOGITECH_FF is not set
+    # CONFIG_LOGIRUMBLEPAD2_FF is not set
+    # CONFIG_LOGIG940_FF is not set
+    # CONFIG_LOGIWHEELS_FF is not set
     # CONFIG_HID_MAGICMOUSE is not set
     # CONFIG_HID_MALTRON is not set
     # CONFIG_HID_MAYFLASH is not set
     # CONFIG_HID_MEGAWORLD_FF is not set
     # CONFIG_HID_REDRAGON is not set
-    # CONFIG_HID_MICROSOFT is not set
+    CONFIG_HID_MICROSOFT=m
     # CONFIG_HID_MONTEREY is not set
     # CONFIG_HID_MULTITOUCH is not set
+    # CONFIG_HID_NINTENDO is not set
     # CONFIG_HID_NTI is not set
     # CONFIG_HID_NTRIG is not set
     # CONFIG_HID_ORTEK is not set
@@ -3369,11 +3430,12 @@ in
     CONFIG_HID_RAZER=y
     # CONFIG_HID_PRIMAX is not set
     # CONFIG_HID_RETRODE is not set
-    # CONFIG_HID_ROCCAT is not set
+    CONFIG_HID_ROCCAT=m
     # CONFIG_HID_SAITEK is not set
     # CONFIG_HID_SAMSUNG is not set
     # CONFIG_HID_SEMITEK is not set
     # CONFIG_HID_SIGMAMICRO is not set
+    # CONFIG_HID_SONY is not set
     # CONFIG_HID_SPEEDLINK is not set
     # CONFIG_HID_STEAM is not set
     # CONFIG_HID_STEELSERIES is not set
@@ -3383,9 +3445,12 @@ in
     # CONFIG_HID_SMARTJOYPLUS is not set
     # CONFIG_HID_TIVO is not set
     # CONFIG_HID_TOPSEED is not set
+    # CONFIG_HID_THINGM is not set
     # CONFIG_HID_THRUSTMASTER is not set
     # CONFIG_HID_UDRAW_PS3 is not set
+    # CONFIG_HID_U2FZERO is not set
     # CONFIG_HID_WACOM is not set
+    # CONFIG_HID_WIIMOTE is not set
     # CONFIG_HID_XINMO is not set
     # CONFIG_HID_ZEROPLUS is not set
     # CONFIG_HID_ZYDACRON is not set
@@ -3460,8 +3525,8 @@ in
     # CONFIG_USB_OXU210HP_HCD is not set
     # CONFIG_USB_ISP116X_HCD is not set
     # CONFIG_USB_FOTG210_HCD is not set
-    CONFIG_USB_OHCI_HCD=y
-    CONFIG_USB_OHCI_HCD_PCI=y
+    CONFIG_USB_OHCI_HCD=m
+    CONFIG_USB_OHCI_HCD_PCI=m
     # CONFIG_USB_OHCI_HCD_PLATFORM is not set
     CONFIG_USB_UHCI_HCD=y
     # CONFIG_USB_SL811_HCD is not set
@@ -3579,10 +3644,83 @@ in
     # end of USB Type-C Alternate Mode drivers
 
     # CONFIG_USB_ROLE_SWITCH is not set
-    # CONFIG_MMC is not set
+    CONFIG_MMC=m
+    CONFIG_MMC_BLOCK=m
+    CONFIG_MMC_BLOCK_MINORS=8
+    # CONFIG_SDIO_UART is not set
+    # CONFIG_MMC_TEST is not set
+
+    #
+    # MMC/SD/SDIO Host Controller Drivers
+    #
+    # CONFIG_MMC_DEBUG is not set
+    # CONFIG_MMC_SDHCI is not set
+    # CONFIG_MMC_WBSD is not set
+    # CONFIG_MMC_TIFM_SD is not set
+    # CONFIG_MMC_CB710 is not set
+    # CONFIG_MMC_VIA_SDMMC is not set
+    # CONFIG_MMC_VUB300 is not set
+    # CONFIG_MMC_USHC is not set
+    # CONFIG_MMC_USDHI6ROL0 is not set
+    # CONFIG_MMC_CQHCI is not set
+    # CONFIG_MMC_HSQ is not set
+    # CONFIG_MMC_TOSHIBA_PCI is not set
+    # CONFIG_MMC_MTK is not set
     # CONFIG_SCSI_UFSHCD is not set
     # CONFIG_MEMSTICK is not set
-    # CONFIG_NEW_LEDS is not set
+    CONFIG_NEW_LEDS=y
+    CONFIG_LEDS_CLASS=m
+    # CONFIG_LEDS_CLASS_FLASH is not set
+    # CONFIG_LEDS_CLASS_MULTICOLOR is not set
+    # CONFIG_LEDS_BRIGHTNESS_HW_CHANGED is not set
+
+    #
+    # LED drivers
+    #
+    # CONFIG_LEDS_APU is not set
+    # CONFIG_LEDS_LM3530 is not set
+    # CONFIG_LEDS_LM3532 is not set
+    # CONFIG_LEDS_LM3642 is not set
+    # CONFIG_LEDS_PCA9532 is not set
+    # CONFIG_LEDS_GPIO is not set
+    # CONFIG_LEDS_LP3944 is not set
+    # CONFIG_LEDS_LP3952 is not set
+    # CONFIG_LEDS_CLEVO_MAIL is not set
+    # CONFIG_LEDS_PCA955X is not set
+    # CONFIG_LEDS_PCA963X is not set
+    # CONFIG_LEDS_BD2802 is not set
+    # CONFIG_LEDS_INTEL_SS4200 is not set
+    # CONFIG_LEDS_LT3593 is not set
+    # CONFIG_LEDS_TCA6507 is not set
+    # CONFIG_LEDS_TLC591XX is not set
+    # CONFIG_LEDS_LM355x is not set
+
+    #
+    # LED driver for blink(1) USB RGB LED is under Special HID drivers (HID_THINGM)
+    #
+    # CONFIG_LEDS_BLINKM is not set
+    # CONFIG_LEDS_MLXCPLD is not set
+    # CONFIG_LEDS_MLXREG is not set
+    # CONFIG_LEDS_USER is not set
+    # CONFIG_LEDS_NIC78BX is not set
+    # CONFIG_LEDS_TI_LMU_COMMON is not set
+
+    #
+    # Flash and Torch LED drivers
+    #
+
+    #
+    # RGB LED drivers
+    #
+
+    #
+    # LED Triggers
+    #
+    # CONFIG_LEDS_TRIGGERS is not set
+
+    #
+    # Simple LED drivers
+    #
     # CONFIG_ACCESSIBILITY is not set
     # CONFIG_INFINIBAND is not set
     CONFIG_EDAC_ATOMIC_SCRUB=y
@@ -3770,11 +3908,14 @@ in
     # CONFIG_ASUS_TF103C_DOCK is not set
     # CONFIG_EEEPC_LAPTOP is not set
     # CONFIG_X86_PLATFORM_DRIVERS_DELL is not set
+    # CONFIG_AMILO_RFKILL is not set
     # CONFIG_FUJITSU_LAPTOP is not set
     # CONFIG_FUJITSU_TABLET is not set
     # CONFIG_GPD_POCKET_FAN is not set
+    # CONFIG_HP_ACCEL is not set
     # CONFIG_WIRELESS_HOTKEY is not set
     # CONFIG_IBM_RTL is not set
+    # CONFIG_IDEAPAD_LAPTOP is not set
     # CONFIG_SENSORS_HDAPS is not set
     # CONFIG_INTEL_ATOMISP2_PM is not set
     # CONFIG_INTEL_SAR_INT1092 is not set
@@ -3801,6 +3942,8 @@ in
     # CONFIG_INTEL_SMARTCONNECT is not set
     # CONFIG_INTEL_TURBO_MAX_3 is not set
     # CONFIG_INTEL_VSEC is not set
+    # CONFIG_MSI_LAPTOP is not set
+    # CONFIG_PCENGINES_APU2 is not set
     # CONFIG_BARCO_P50_GPIO is not set
     # CONFIG_SAMSUNG_LAPTOP is not set
     # CONFIG_SAMSUNG_Q10 is not set
@@ -3940,7 +4083,7 @@ in
     #
     # PHY Subsystem
     #
-    # CONFIG_GENERIC_PHY is not set
+    CONFIG_GENERIC_PHY=y
     # CONFIG_USB_LGM_PHY is not set
     # CONFIG_PHY_CAN_TRANSCEIVER is not set
 
