@@ -31,6 +31,7 @@ in rec {
   additionalModules = [];
   additionalUserPackages = [
     "steam"
+    "steam-native"
     "jre8"
   ]; # will be evaluated later
   additionalOverlays = let
@@ -39,7 +40,7 @@ in rec {
       basekernelsuffix = "xanmod_latest";
     };
   in [
-    # kernel
+    kernel
   ];
   hardwareConfiguration = [./hardware];
   packageSelections = {

@@ -10,6 +10,8 @@
     ./hardware-configuration.nix
   ];
 
+  # programs.steam.enable = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = ["nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3"];
