@@ -34,14 +34,7 @@ in rec {
     "steam-native"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = let
-    kernel = import ./hardware/kernel-overlay.nix {
-      inherit override hostname;
-      basekernelsuffix = "xanmod_latest";
-    };
-  in [
-    kernel
-  ];
+  additionalOverlays = [];
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
@@ -49,10 +42,10 @@ in rec {
       "grub"
     ];
     unstable = [
-      "linuxPackages_latest"
-      "linuxPackages_zen"
-      "linuxPackages_xanmod_latest"
-      "linuxPackages_xanmod"
+      # "linuxPackages_latest"
+      # "linuxPackages_zen"
+      # "linuxPackages_xanmod_latest"
+      # "linuxPackages_xanmod"
       {
         set1 = "linuxKernel";
         set2 = "kernel";
@@ -141,6 +134,14 @@ in rec {
     name = "remotebuild";
   };
   unstableOverrides = {
+    additionalOverlays = let
+      kernel = import ./hardware/kernel-overlay.nix {
+        inherit override hostname;
+        basekernelsuffix = "xanmod_latest";
+      };
+    in [
+      kernel
+    ];
     name = "unstable";
   };
   localbuildOverrides = override remotebuildOverrides {

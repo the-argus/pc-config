@@ -202,7 +202,7 @@ in
     CONFIG_UTS_NS=y
     CONFIG_TIME_NS=y
     CONFIG_IPC_NS=y
-    # CONFIG_USER_NS is not set
+    CONFIG_USER_NS=y
     CONFIG_PID_NS=y
     CONFIG_NET_NS=y
     # CONFIG_CHECKPOINT_RESTORE is not set
