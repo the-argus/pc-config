@@ -31,7 +31,7 @@ in rec {
   additionalModules = [];
   additionalUserPackages = [
     "steam"
-    "steam-native"
+    "steam.run"
     "jre8"
   ]; # will be evaluated later
   additionalOverlays = [];
