@@ -1,4 +1,9 @@
-{override, hostname, basekernelsuffix, ...}: (self: super: let
+{
+  override,
+  hostname,
+  basekernelsuffix,
+  ...
+}: (self: super: let
   dirVersionNames = {
     xanmod_latest = "xanmod";
     "5_15" = "";
@@ -20,16 +25,22 @@ in {
   linuxKernel = override super.linuxKernel {
     kernels = override super.linuxKernel.kernels {
       ${basekernel} =
-        (super.linuxKernel.manualConfig {
-          stdenv = super.gccStdenv;
-          inherit src version;
-          modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
-          inherit (super) lib;
-          configfile = super.callPackage ./kernelconfig.nix {
-            inherit hostname;
-          };
-          allowImportFromDerivation = true;
-        })
+        (
+          (super.linuxKernel.manualConfig {
+            stdenv = super.gccStdenv;
+            inherit src version;
+            modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
+            inherit (super) lib;
+            configfile = super.callPackage ./kernelconfig.nix {
+              inherit hostname;
+            };
+            allowImportFromDerivation = true;
+          })
+          .override {
+            features.ia32Emulation = true;
+            structuredExtraConfig = {IA32_EMULATION = {tristate = "y";};};
+          }
+        )
         .overrideAttrs (oa: {
           nativeBuildInputs = (oa.nativeBuildInputs or []) ++ [super.lz4];
         });

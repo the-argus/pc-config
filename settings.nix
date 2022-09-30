@@ -33,7 +33,13 @@ in rec {
     "steam"
     "jre8"
   ]; # will be evaluated later
-  additionalOverlays = [];
+  additionalOverlays = [
+    (self: super: {
+      steam = super.steam.override {
+        extraLibraries = pkgs: [super.mesa.drivers];
+      };
+    })
+  ];
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
