@@ -1820,6 +1820,7 @@ in
     CONFIG_INPUT_FF_MEMLESS=y
     # CONFIG_INPUT_SPARSEKMAP is not set
     # CONFIG_INPUT_MATRIXKMAP is not set
+    CONFIG_INPUT_VIVALDIFMAP=y
 
     #
     # Userland interfaces
@@ -1835,7 +1836,33 @@ in
     #
     # Input Device Drivers
     #
-    # CONFIG_INPUT_KEYBOARD is not set
+    CONFIG_INPUT_KEYBOARD=y
+    # CONFIG_KEYBOARD_ADP5588 is not set
+    # CONFIG_KEYBOARD_ADP5589 is not set
+    CONFIG_KEYBOARD_ATKBD=y
+    # CONFIG_KEYBOARD_QT1050 is not set
+    # CONFIG_KEYBOARD_QT1070 is not set
+    # CONFIG_KEYBOARD_QT2160 is not set
+    # CONFIG_KEYBOARD_DLINK_DIR685 is not set
+    # CONFIG_KEYBOARD_LKKBD is not set
+    # CONFIG_KEYBOARD_GPIO is not set
+    # CONFIG_KEYBOARD_GPIO_POLLED is not set
+    # CONFIG_KEYBOARD_TCA6416 is not set
+    # CONFIG_KEYBOARD_TCA8418 is not set
+    # CONFIG_KEYBOARD_MATRIX is not set
+    # CONFIG_KEYBOARD_LM8323 is not set
+    # CONFIG_KEYBOARD_LM8333 is not set
+    # CONFIG_KEYBOARD_MAX7359 is not set
+    # CONFIG_KEYBOARD_MCS is not set
+    # CONFIG_KEYBOARD_MPR121 is not set
+    # CONFIG_KEYBOARD_NEWTON is not set
+    # CONFIG_KEYBOARD_OPENCORES is not set
+    # CONFIG_KEYBOARD_SAMSUNG is not set
+    # CONFIG_KEYBOARD_STOWAWAY is not set
+    # CONFIG_KEYBOARD_SUNKBD is not set
+    # CONFIG_KEYBOARD_TM2_TOUCHKEY is not set
+    # CONFIG_KEYBOARD_XTKBD is not set
+    # CONFIG_KEYBOARD_CYPRESS_SF is not set
     CONFIG_INPUT_MOUSE=y
     # CONFIG_MOUSE_PS2 is not set
     # CONFIG_MOUSE_SERIAL is not set
@@ -1884,13 +1911,13 @@ in
     #
     # Hardware I/O ports
     #
-    CONFIG_SERIO=m
+    CONFIG_SERIO=y
     CONFIG_ARCH_MIGHT_HAVE_PC_SERIO=y
-    # CONFIG_SERIO_I8042 is not set
+    CONFIG_SERIO_I8042=y
     # CONFIG_SERIO_SERPORT is not set
     # CONFIG_SERIO_CT82C710 is not set
     CONFIG_SERIO_PCIPS2=m
-    # CONFIG_SERIO_LIBPS2 is not set
+    CONFIG_SERIO_LIBPS2=y
     # CONFIG_SERIO_RAW is not set
     # CONFIG_SERIO_ALTERA_PS2 is not set
     # CONFIG_SERIO_PS2MULT is not set
@@ -3272,6 +3299,7 @@ in
     # CONFIG_LEDS_GPIO is not set
     # CONFIG_LEDS_LP3944 is not set
     # CONFIG_LEDS_LP3952 is not set
+    # CONFIG_LEDS_CLEVO_MAIL is not set
     # CONFIG_LEDS_PCA955X is not set
     # CONFIG_LEDS_PCA963X is not set
     # CONFIG_LEDS_BD2802 is not set
