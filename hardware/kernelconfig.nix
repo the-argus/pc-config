@@ -920,6 +920,8 @@ in
     # end of Memory Management options
 
     CONFIG_NET=y
+    CONFIG_NET_INGRESS=y
+    CONFIG_NET_EGRESS=y
     CONFIG_SKB_EXTENSIONS=y
 
     #
@@ -947,15 +949,12 @@ in
     # CONFIG_IP_PNP is not set
     # CONFIG_NET_IPIP is not set
     # CONFIG_NET_IPGRE_DEMUX is not set
-    CONFIG_NET_IP_TUNNEL=m
     # CONFIG_SYN_COOKIES is not set
     # CONFIG_NET_IPVTI is not set
     # CONFIG_NET_FOU is not set
-    # CONFIG_NET_FOU_IP_TUNNELS is not set
     # CONFIG_INET_AH is not set
     # CONFIG_INET_ESP is not set
     # CONFIG_INET_IPCOMP is not set
-    CONFIG_INET_TUNNEL=m
     # CONFIG_INET_DIAG is not set
     CONFIG_TCP_CONG_ADVANCED=y
     # CONFIG_TCP_CONG_BIC is not set
@@ -980,17 +979,16 @@ in
     # CONFIG_DEFAULT_RENO is not set
     CONFIG_DEFAULT_TCP_CONG="bbr2"
     # CONFIG_TCP_MD5SIG is not set
-    CONFIG_IPV6=m
+    CONFIG_IPV6=y
     # CONFIG_IPV6_ROUTER_PREF is not set
     # CONFIG_IPV6_OPTIMISTIC_DAD is not set
     # CONFIG_INET6_AH is not set
     # CONFIG_INET6_ESP is not set
     # CONFIG_INET6_IPCOMP is not set
     # CONFIG_IPV6_MIP6 is not set
+    # CONFIG_IPV6_ILA is not set
     # CONFIG_IPV6_VTI is not set
-    CONFIG_IPV6_SIT=m
-    # CONFIG_IPV6_SIT_6RD is not set
-    CONFIG_IPV6_NDISC_NODETYPE=y
+    # CONFIG_IPV6_SIT is not set
     # CONFIG_IPV6_TUNNEL is not set
     # CONFIG_IPV6_MULTIPLE_TABLES is not set
     # CONFIG_IPV6_MROUTE is not set
@@ -1002,7 +1000,74 @@ in
     # CONFIG_MPTCP is not set
     # CONFIG_NETWORK_SECMARK is not set
     # CONFIG_NETWORK_PHY_TIMESTAMPING is not set
-    # CONFIG_NETFILTER is not set
+    CONFIG_NETFILTER=y
+    CONFIG_NETFILTER_ADVANCED=y
+
+    #
+    # Core Netfilter Configuration
+    #
+    CONFIG_NETFILTER_INGRESS=y
+    CONFIG_NETFILTER_EGRESS=y
+    CONFIG_NETFILTER_NETLINK=y
+    # CONFIG_NETFILTER_NETLINK_HOOK is not set
+    # CONFIG_NETFILTER_NETLINK_ACCT is not set
+    # CONFIG_NETFILTER_NETLINK_QUEUE is not set
+    # CONFIG_NETFILTER_NETLINK_LOG is not set
+    # CONFIG_NETFILTER_NETLINK_OSF is not set
+    # CONFIG_NF_CONNTRACK is not set
+    # CONFIG_NF_LOG_SYSLOG is not set
+    CONFIG_NF_TABLES=y
+    # CONFIG_NF_TABLES_INET is not set
+    # CONFIG_NF_TABLES_NETDEV is not set
+    # CONFIG_NFT_NUMGEN is not set
+    # CONFIG_NFT_LOG is not set
+    # CONFIG_NFT_LIMIT is not set
+    # CONFIG_NFT_TUNNEL is not set
+    # CONFIG_NFT_OBJREF is not set
+    # CONFIG_NFT_QUOTA is not set
+    # CONFIG_NFT_REJECT is not set
+    # CONFIG_NFT_HASH is not set
+    # CONFIG_NFT_XFRM is not set
+    # CONFIG_NFT_SOCKET is not set
+    # CONFIG_NFT_OSF is not set
+    # CONFIG_NFT_TPROXY is not set
+    # CONFIG_NETFILTER_XTABLES is not set
+    # end of Core Netfilter Configuration
+
+    # CONFIG_IP_SET is not set
+    # CONFIG_IP_VS is not set
+
+    #
+    # IP: Netfilter Configuration
+    #
+    # CONFIG_NF_SOCKET_IPV4 is not set
+    # CONFIG_NF_TPROXY_IPV4 is not set
+    CONFIG_NF_TABLES_IPV4=y
+    # CONFIG_NFT_DUP_IPV4 is not set
+    # CONFIG_NFT_FIB_IPV4 is not set
+    # CONFIG_NF_TABLES_ARP is not set
+    # CONFIG_NF_DUP_IPV4 is not set
+    # CONFIG_NF_LOG_ARP is not set
+    # CONFIG_NF_LOG_IPV4 is not set
+    # CONFIG_NF_REJECT_IPV4 is not set
+    # CONFIG_IP_NF_IPTABLES is not set
+    # CONFIG_IP_NF_ARPTABLES is not set
+    # end of IP: Netfilter Configuration
+
+    #
+    # IPv6: Netfilter Configuration
+    #
+    # CONFIG_NF_SOCKET_IPV6 is not set
+    # CONFIG_NF_TPROXY_IPV6 is not set
+    CONFIG_NF_TABLES_IPV6=y
+    # CONFIG_NFT_DUP_IPV6 is not set
+    # CONFIG_NFT_FIB_IPV6 is not set
+    # CONFIG_NF_DUP_IPV6 is not set
+    # CONFIG_NF_REJECT_IPV6 is not set
+    # CONFIG_NF_LOG_IPV6 is not set
+    # CONFIG_IP6_NF_IPTABLES is not set
+    # end of IPv6: Netfilter Configuration
+
     # CONFIG_BPFILTER is not set
     # CONFIG_IP_DCCP is not set
     # CONFIG_IP_SCTP is not set
@@ -1026,11 +1091,11 @@ in
     CONFIG_DNS_RESOLVER=y
     # CONFIG_BATMAN_ADV is not set
     # CONFIG_OPENVSWITCH is not set
-    CONFIG_VSOCKETS=y
-    CONFIG_VSOCKETS_DIAG=y
-    CONFIG_VSOCKETS_LOOPBACK=y
-    CONFIG_VIRTIO_VSOCKETS=y
-    CONFIG_VIRTIO_VSOCKETS_COMMON=y
+    CONFIG_VSOCKETS=m
+    CONFIG_VSOCKETS_DIAG=m
+    CONFIG_VSOCKETS_LOOPBACK=m
+    CONFIG_VIRTIO_VSOCKETS=m
+    CONFIG_VIRTIO_VSOCKETS_COMMON=m
     # CONFIG_NETLINK_DIAG is not set
     # CONFIG_MPLS is not set
     # CONFIG_NET_NSH is not set
@@ -1098,7 +1163,6 @@ in
     # CONFIG_PSAMPLE is not set
     # CONFIG_NET_IFE is not set
     # CONFIG_LWTUNNEL is not set
-    CONFIG_DST_CACHE=y
     CONFIG_GRO_CELLS=y
     CONFIG_NET_SELFTESTS=y
     CONFIG_FAILOVER=y
