@@ -3208,7 +3208,7 @@ in
     CONFIG_USB_OHCI_HCD=m
     CONFIG_USB_OHCI_HCD_PCI=m
     # CONFIG_USB_OHCI_HCD_PLATFORM is not set
-    # CONFIG_USB_UHCI_HCD is not set
+    CONFIG_USB_UHCI_HCD=m
     # CONFIG_USB_SL811_HCD is not set
     # CONFIG_USB_R8A66597_HCD is not set
     # CONFIG_USB_HCD_TEST_MODE is not set
