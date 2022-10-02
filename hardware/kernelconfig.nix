@@ -920,7 +920,6 @@ in
     # end of Memory Management options
 
     CONFIG_NET=y
-    CONFIG_COMPAT_NETLINK_MESSAGES=y
     CONFIG_SKB_EXTENSIONS=y
 
     #
@@ -1065,11 +1064,6 @@ in
     # CONFIG_AF_KCM is not set
     # CONFIG_MCTP is not set
     CONFIG_WIRELESS=y
-    CONFIG_WIRELESS_EXT=y
-    CONFIG_WEXT_CORE=y
-    CONFIG_WEXT_PROC=y
-    CONFIG_WEXT_SPY=y
-    CONFIG_WEXT_PRIV=y
     CONFIG_CFG80211=m
     # CONFIG_NL80211_TESTMODE is not set
     # CONFIG_CFG80211_DEVELOPER_WARNINGS is not set
@@ -1077,13 +1071,7 @@ in
     CONFIG_CFG80211_USE_KERNEL_REGDB_KEYS=y
     CONFIG_CFG80211_DEFAULT_PS=y
     CONFIG_CFG80211_CRDA_SUPPORT=y
-    CONFIG_CFG80211_WEXT=y
-    CONFIG_CFG80211_WEXT_EXPORT=y
-    CONFIG_LIB80211=m
-    CONFIG_LIB80211_CRYPT_WEP=m
-    CONFIG_LIB80211_CRYPT_CCMP=m
-    CONFIG_LIB80211_CRYPT_TKIP=m
-    # CONFIG_LIB80211_DEBUG is not set
+    # CONFIG_CFG80211_WEXT is not set
     CONFIG_MAC80211=m
     CONFIG_MAC80211_HAS_RC=y
     CONFIG_MAC80211_RC_MINSTREL=y
@@ -1771,39 +1759,11 @@ in
     # CONFIG_WLAN_VENDOR_BROADCOM is not set
     # CONFIG_WLAN_VENDOR_CISCO is not set
     CONFIG_WLAN_VENDOR_INTEL=y
-    CONFIG_IPW2100=m
-    # CONFIG_IPW2100_MONITOR is not set
-    # CONFIG_IPW2100_DEBUG is not set
-    CONFIG_IPW2200=m
-    # CONFIG_IPW2200_MONITOR is not set
-    # CONFIG_IPW2200_QOS is not set
-    # CONFIG_IPW2200_DEBUG is not set
-    CONFIG_LIBIPW=m
-    # CONFIG_LIBIPW_DEBUG is not set
-    CONFIG_IWLEGACY=m
-    CONFIG_IWL4965=m
-    CONFIG_IWL3945=m
-
-    #
-    # iwl3945 / iwl4965 Debugging Options
-    #
-    # CONFIG_IWLEGACY_DEBUG is not set
-    # end of iwl3945 / iwl4965 Debugging Options
-
-    CONFIG_IWLWIFI=m
-    # CONFIG_IWLDVM is not set
-    # CONFIG_IWLMVM is not set
-
-    #
-    # WARNING: iwlwifi is useless without IWLDVM or IWLMVM
-    #
-
-    #
-    # Debugging Options
-    #
-    # CONFIG_IWLWIFI_DEBUG is not set
-    # end of Debugging Options
-
+    # CONFIG_IPW2100 is not set
+    # CONFIG_IPW2200 is not set
+    # CONFIG_IWL4965 is not set
+    # CONFIG_IWL3945 is not set
+    # CONFIG_IWLWIFI is not set
     # CONFIG_WLAN_VENDOR_INTERSIL is not set
     # CONFIG_WLAN_VENDOR_MARVELL is not set
     # CONFIG_WLAN_VENDOR_MEDIATEK is not set
@@ -1811,9 +1771,8 @@ in
     # CONFIG_WLAN_VENDOR_PURELIFI is not set
     # CONFIG_WLAN_VENDOR_RALINK is not set
     CONFIG_WLAN_VENDOR_REALTEK=y
-    CONFIG_RTL8180=m
-    CONFIG_RTL8187=m
-    CONFIG_RTL8187_LEDS=y
+    # CONFIG_RTL8180 is not set
+    # CONFIG_RTL8187 is not set
     CONFIG_RTL_CARDS=m
     # CONFIG_RTL8192CE is not set
     # CONFIG_RTL8192SE is not set
@@ -1821,9 +1780,13 @@ in
     # CONFIG_RTL8723AE is not set
     # CONFIG_RTL8723BE is not set
     # CONFIG_RTL8188EE is not set
-    # CONFIG_RTL8192EE is not set
+    CONFIG_RTL8192EE=m
     # CONFIG_RTL8821AE is not set
     # CONFIG_RTL8192CU is not set
+    CONFIG_RTLWIFI=m
+    CONFIG_RTLWIFI_PCI=m
+    # CONFIG_RTLWIFI_DEBUG is not set
+    CONFIG_RTLBTCOEXIST=m
     # CONFIG_RTL8XXXU is not set
     # CONFIG_RTW88 is not set
     # CONFIG_RTW89 is not set
@@ -1857,7 +1820,6 @@ in
     CONFIG_INPUT_FF_MEMLESS=y
     # CONFIG_INPUT_SPARSEKMAP is not set
     # CONFIG_INPUT_MATRIXKMAP is not set
-    CONFIG_INPUT_VIVALDIFMAP=m
 
     #
     # Userland interfaces
@@ -1873,48 +1835,9 @@ in
     #
     # Input Device Drivers
     #
-    CONFIG_INPUT_KEYBOARD=y
-    # CONFIG_KEYBOARD_ADP5588 is not set
-    # CONFIG_KEYBOARD_ADP5589 is not set
-    CONFIG_KEYBOARD_ATKBD=m
-    # CONFIG_KEYBOARD_QT1050 is not set
-    # CONFIG_KEYBOARD_QT1070 is not set
-    # CONFIG_KEYBOARD_QT2160 is not set
-    # CONFIG_KEYBOARD_DLINK_DIR685 is not set
-    # CONFIG_KEYBOARD_LKKBD is not set
-    # CONFIG_KEYBOARD_GPIO is not set
-    # CONFIG_KEYBOARD_GPIO_POLLED is not set
-    # CONFIG_KEYBOARD_TCA6416 is not set
-    # CONFIG_KEYBOARD_TCA8418 is not set
-    # CONFIG_KEYBOARD_MATRIX is not set
-    # CONFIG_KEYBOARD_LM8323 is not set
-    # CONFIG_KEYBOARD_LM8333 is not set
-    # CONFIG_KEYBOARD_MAX7359 is not set
-    # CONFIG_KEYBOARD_MCS is not set
-    # CONFIG_KEYBOARD_MPR121 is not set
-    # CONFIG_KEYBOARD_NEWTON is not set
-    # CONFIG_KEYBOARD_OPENCORES is not set
-    # CONFIG_KEYBOARD_SAMSUNG is not set
-    # CONFIG_KEYBOARD_STOWAWAY is not set
-    # CONFIG_KEYBOARD_SUNKBD is not set
-    # CONFIG_KEYBOARD_TM2_TOUCHKEY is not set
-    # CONFIG_KEYBOARD_XTKBD is not set
-    # CONFIG_KEYBOARD_CYPRESS_SF is not set
+    # CONFIG_INPUT_KEYBOARD is not set
     CONFIG_INPUT_MOUSE=y
-    CONFIG_MOUSE_PS2=m
-    CONFIG_MOUSE_PS2_ALPS=y
-    CONFIG_MOUSE_PS2_BYD=y
-    CONFIG_MOUSE_PS2_LOGIPS2PP=y
-    CONFIG_MOUSE_PS2_SYNAPTICS=y
-    CONFIG_MOUSE_PS2_SYNAPTICS_SMBUS=y
-    CONFIG_MOUSE_PS2_CYPRESS=y
-    CONFIG_MOUSE_PS2_LIFEBOOK=y
-    CONFIG_MOUSE_PS2_TRACKPOINT=y
-    # CONFIG_MOUSE_PS2_ELANTECH is not set
-    # CONFIG_MOUSE_PS2_SENTELIC is not set
-    # CONFIG_MOUSE_PS2_TOUCHKIT is not set
-    CONFIG_MOUSE_PS2_FOCALTECH=y
-    CONFIG_MOUSE_PS2_SMBUS=y
+    # CONFIG_MOUSE_PS2 is not set
     # CONFIG_MOUSE_SERIAL is not set
     # CONFIG_MOUSE_APPLETOUCH is not set
     # CONFIG_MOUSE_BCM5974 is not set
@@ -1961,19 +1884,8 @@ in
     #
     # Hardware I/O ports
     #
-    CONFIG_SERIO=m
+    # CONFIG_SERIO is not set
     CONFIG_ARCH_MIGHT_HAVE_PC_SERIO=y
-    CONFIG_SERIO_I8042=m
-    # CONFIG_SERIO_SERPORT is not set
-    # CONFIG_SERIO_CT82C710 is not set
-    CONFIG_SERIO_PCIPS2=m
-    CONFIG_SERIO_LIBPS2=m
-    # CONFIG_SERIO_RAW is not set
-    # CONFIG_SERIO_ALTERA_PS2 is not set
-    # CONFIG_SERIO_PS2MULT is not set
-    # CONFIG_SERIO_ARC_PS2 is not set
-    # CONFIG_SERIO_GPIO_PS2 is not set
-    # CONFIG_USERIO is not set
     # CONFIG_GAMEPORT is not set
     # end of Hardware I/O ports
     # end of Input device support
@@ -1995,27 +1907,12 @@ in
     #
     # Serial drivers
     #
-    CONFIG_SERIAL_8250=m
-    # CONFIG_SERIAL_8250_DEPRECATED_OPTIONS is not set
-    CONFIG_SERIAL_8250_PNP=y
-    # CONFIG_SERIAL_8250_16550A_VARIANTS is not set
-    # CONFIG_SERIAL_8250_FINTEK is not set
-    CONFIG_SERIAL_8250_DMA=y
-    # CONFIG_SERIAL_8250_PCI is not set
-    CONFIG_SERIAL_8250_NR_UARTS=4
-    CONFIG_SERIAL_8250_RUNTIME_UARTS=1
-    # CONFIG_SERIAL_8250_EXTENDED is not set
-    # CONFIG_SERIAL_8250_DW is not set
-    # CONFIG_SERIAL_8250_RT288X is not set
-    # CONFIG_SERIAL_8250_LPSS is not set
-    # CONFIG_SERIAL_8250_MID is not set
-    # CONFIG_SERIAL_8250_PERICOM is not set
+    # CONFIG_SERIAL_8250 is not set
 
     #
     # Non-8250 serial port support
     #
     # CONFIG_SERIAL_UARTLITE is not set
-    CONFIG_SERIAL_CORE=m
     # CONFIG_SERIAL_JSM is not set
     # CONFIG_SERIAL_LANTIQ is not set
     # CONFIG_SERIAL_SCCNXP is not set
@@ -2029,7 +1926,6 @@ in
     # CONFIG_SERIAL_SPRD is not set
     # end of Serial drivers
 
-    CONFIG_SERIAL_MCTRL_GPIO=m
     # CONFIG_SERIAL_NONSTANDARD is not set
     # CONFIG_N_GSM is not set
     # CONFIG_NOZOMI is not set
@@ -3365,7 +3261,6 @@ in
     # CONFIG_LEDS_GPIO is not set
     # CONFIG_LEDS_LP3944 is not set
     # CONFIG_LEDS_LP3952 is not set
-    # CONFIG_LEDS_CLEVO_MAIL is not set
     # CONFIG_LEDS_PCA955X is not set
     # CONFIG_LEDS_PCA963X is not set
     # CONFIG_LEDS_BD2802 is not set
