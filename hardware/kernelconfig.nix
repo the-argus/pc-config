@@ -1306,7 +1306,6 @@ in
     # CONFIG_NVME_HWMON is not set
     # CONFIG_NVME_FC is not set
     # CONFIG_NVME_TCP is not set
-    # CONFIG_NVME_TARGET is not set
     # end of NVME Support
 
     #
@@ -2805,8 +2804,8 @@ in
     CONFIG_SND_TIMER=y
     CONFIG_SND_PCM=y
     CONFIG_SND_HWDEP=y
-    CONFIG_SND_SEQ_DEVICE=m
-    CONFIG_SND_RAWMIDI=m
+    CONFIG_SND_SEQ_DEVICE=y
+    CONFIG_SND_RAWMIDI=y
     CONFIG_SND_JACK=y
     CONFIG_SND_JACK_INPUT_DEV=y
     # CONFIG_SND_OSSEMUL is not set
@@ -2821,10 +2820,10 @@ in
     CONFIG_SND_VMASTER=y
     CONFIG_SND_DMA_SGBUF=y
     CONFIG_SND_CTL_LED=y
-    CONFIG_SND_SEQUENCER=m
+    CONFIG_SND_SEQUENCER=y
     CONFIG_SND_SEQ_DUMMY=m
-    CONFIG_SND_SEQ_MIDI_EVENT=m
-    CONFIG_SND_SEQ_MIDI=m
+    CONFIG_SND_SEQ_MIDI_EVENT=y
+    CONFIG_SND_SEQ_MIDI=y
     CONFIG_SND_SEQ_VIRMIDI=m
     CONFIG_SND_DRIVERS=y
     # CONFIG_SND_DUMMY is not set
@@ -2938,7 +2937,7 @@ in
     CONFIG_SND_INTEL_DSP_CONFIG=y
     CONFIG_SND_INTEL_SOUNDWIRE_ACPI=y
     CONFIG_SND_USB=y
-    CONFIG_SND_USB_AUDIO=m
+    CONFIG_SND_USB_AUDIO=y
     # CONFIG_SND_USB_UA101 is not set
     # CONFIG_SND_USB_USX2Y is not set
     # CONFIG_SND_USB_CAIAQ is not set
@@ -3697,7 +3696,6 @@ in
     # CONFIG_SLIMBUS is not set
     # CONFIG_INTERCONNECT is not set
     # CONFIG_COUNTER is not set
-    # CONFIG_MOST is not set
     # CONFIG_PECI is not set
     # CONFIG_HTE is not set
     # end of Device Drivers
@@ -3729,7 +3727,6 @@ in
     # CONFIG_XFS_WARN is not set
     # CONFIG_XFS_DEBUG is not set
     # CONFIG_GFS2_FS is not set
-    # CONFIG_OCFS2_FS is not set
     CONFIG_BTRFS_FS=y
     CONFIG_BTRFS_FS_POSIX_ACL=y
     # CONFIG_BTRFS_FS_CHECK_INTEGRITY is not set
@@ -3752,7 +3749,7 @@ in
     # CONFIG_QUOTA is not set
     CONFIG_AUTOFS4_FS=y
     CONFIG_AUTOFS_FS=y
-    CONFIG_FUSE_FS=m
+    CONFIG_FUSE_FS=y
     # CONFIG_CUSE is not set
     CONFIG_VIRTIO_FS=m
     # CONFIG_OVERLAY_FS is not set
@@ -3816,8 +3813,8 @@ in
     # CONFIG_HUGETLB_PAGE_OPTIMIZE_VMEMMAP_DEFAULT_ON is not set
     CONFIG_MEMFD_CREATE=y
     CONFIG_ARCH_HAS_GIGANTIC_PAGE=y
-    CONFIG_CONFIGFS_FS=m
-    CONFIG_EFIVAR_FS=m
+    # CONFIG_CONFIGFS_FS is not set
+    CONFIG_EFIVAR_FS=y
     # end of Pseudo filesystems
 
     # CONFIG_MISC_FILESYSTEMS is not set
@@ -3902,7 +3899,6 @@ in
     # CONFIG_NLS_MAC_ROMANIAN is not set
     # CONFIG_NLS_MAC_TURKISH is not set
     CONFIG_NLS_UTF8=y
-    # CONFIG_DLM is not set
     # CONFIG_UNICODE is not set
     CONFIG_IO_WQ=y
     # end of File systems
