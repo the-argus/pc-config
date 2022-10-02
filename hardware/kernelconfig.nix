@@ -1884,8 +1884,19 @@ in
     #
     # Hardware I/O ports
     #
-    # CONFIG_SERIO is not set
+    CONFIG_SERIO=m
     CONFIG_ARCH_MIGHT_HAVE_PC_SERIO=y
+    # CONFIG_SERIO_I8042 is not set
+    # CONFIG_SERIO_SERPORT is not set
+    # CONFIG_SERIO_CT82C710 is not set
+    CONFIG_SERIO_PCIPS2=m
+    # CONFIG_SERIO_LIBPS2 is not set
+    # CONFIG_SERIO_RAW is not set
+    # CONFIG_SERIO_ALTERA_PS2 is not set
+    # CONFIG_SERIO_PS2MULT is not set
+    # CONFIG_SERIO_ARC_PS2 is not set
+    # CONFIG_SERIO_GPIO_PS2 is not set
+    # CONFIG_USERIO is not set
     # CONFIG_GAMEPORT is not set
     # end of Hardware I/O ports
     # end of Input device support
