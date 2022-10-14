@@ -9,6 +9,7 @@ in rec {
   system = "x86_64-linux";
   username = "argus";
   hostname = "mutant";
+  useDvorak = false;
   # unfree packages that i explicitly use
   allowedUnfree = [
     "spotify-unwrapped"
@@ -43,13 +44,13 @@ in rec {
   hardwareConfiguration = [./hardware];
   packageSelections = {
     remotebuild = [
-      "dash"
-      "grub"
+      # "dash"
+      # "grub"
     ];
     unstable = [
       # "linuxPackages_latest"
       # "linuxPackages_zen"
-      # "linuxPackages_xanmod_latest"
+      "linuxPackages_xanmod_latest"
       # "linuxPackages_xanmod"
       {
         set1 = "linuxKernel";

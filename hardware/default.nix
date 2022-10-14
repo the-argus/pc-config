@@ -10,6 +10,9 @@
     ./hardware-configuration.nix
   ];
 
+  /* nix.package = pkgs.nixVersions.nix_2_7; */
+  nix.package = pkgs.nixFlakes;
+
   hardware.steam-hardware.enable = true;
 
   boot = {

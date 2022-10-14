@@ -28,7 +28,7 @@ in {
         (super.linuxKernel.manualConfig {
           stdenv = super.gccStdenv;
           inherit src version;
-          modDirVersion = "${version}${dirVersionName}-${super.lib.strings.toUpper hostname}";
+          modDirVersion = "${version}-${super.lib.strings.toUpper hostname}${dirVersionName}";
           inherit (super) lib;
           configfile = super.callPackage ./kernelconfig.nix {
             inherit hostname;
