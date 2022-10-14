@@ -1015,7 +1015,7 @@ in
     # CONFIG_NETFILTER_NETLINK_LOG is not set
     # CONFIG_NETFILTER_NETLINK_OSF is not set
     # CONFIG_NF_CONNTRACK is not set
-    # CONFIG_NF_LOG_SYSLOG is not set
+    CONFIG_NF_LOG_SYSLOG=m
     CONFIG_NF_TABLES=y
     # CONFIG_NF_TABLES_INET is not set
     # CONFIG_NF_TABLES_NETDEV is not set
@@ -1026,12 +1026,75 @@ in
     # CONFIG_NFT_OBJREF is not set
     # CONFIG_NFT_QUOTA is not set
     # CONFIG_NFT_REJECT is not set
+    # CONFIG_NFT_COMPAT is not set
     # CONFIG_NFT_HASH is not set
+    CONFIG_NFT_FIB=m
     # CONFIG_NFT_XFRM is not set
     # CONFIG_NFT_SOCKET is not set
     # CONFIG_NFT_OSF is not set
     # CONFIG_NFT_TPROXY is not set
-    # CONFIG_NETFILTER_XTABLES is not set
+    CONFIG_NETFILTER_XTABLES=m
+    CONFIG_NETFILTER_XTABLES_COMPAT=y
+
+    #
+    # Xtables combined modules
+    #
+    # CONFIG_NETFILTER_XT_MARK is not set
+
+    #
+    # Xtables targets
+    #
+    # CONFIG_NETFILTER_XT_TARGET_CLASSIFY is not set
+    # CONFIG_NETFILTER_XT_TARGET_HMARK is not set
+    # CONFIG_NETFILTER_XT_TARGET_IDLETIMER is not set
+    # CONFIG_NETFILTER_XT_TARGET_LED is not set
+    # CONFIG_NETFILTER_XT_TARGET_LOG is not set
+    # CONFIG_NETFILTER_XT_TARGET_MARK is not set
+    # CONFIG_NETFILTER_XT_TARGET_NFLOG is not set
+    # CONFIG_NETFILTER_XT_TARGET_NFQUEUE is not set
+    # CONFIG_NETFILTER_XT_TARGET_RATEEST is not set
+    # CONFIG_NETFILTER_XT_TARGET_TEE is not set
+    # CONFIG_NETFILTER_XT_TARGET_TCPMSS is not set
+
+    #
+    # Xtables matches
+    #
+    # CONFIG_NETFILTER_XT_MATCH_ADDRTYPE is not set
+    # CONFIG_NETFILTER_XT_MATCH_BPF is not set
+    # CONFIG_NETFILTER_XT_MATCH_CGROUP is not set
+    # CONFIG_NETFILTER_XT_MATCH_COMMENT is not set
+    # CONFIG_NETFILTER_XT_MATCH_CPU is not set
+    # CONFIG_NETFILTER_XT_MATCH_DCCP is not set
+    # CONFIG_NETFILTER_XT_MATCH_DEVGROUP is not set
+    # CONFIG_NETFILTER_XT_MATCH_DSCP is not set
+    # CONFIG_NETFILTER_XT_MATCH_ECN is not set
+    # CONFIG_NETFILTER_XT_MATCH_ESP is not set
+    # CONFIG_NETFILTER_XT_MATCH_HASHLIMIT is not set
+    # CONFIG_NETFILTER_XT_MATCH_HL is not set
+    # CONFIG_NETFILTER_XT_MATCH_IPCOMP is not set
+    # CONFIG_NETFILTER_XT_MATCH_IPRANGE is not set
+    # CONFIG_NETFILTER_XT_MATCH_L2TP is not set
+    # CONFIG_NETFILTER_XT_MATCH_LENGTH is not set
+    # CONFIG_NETFILTER_XT_MATCH_LIMIT is not set
+    # CONFIG_NETFILTER_XT_MATCH_MAC is not set
+    # CONFIG_NETFILTER_XT_MATCH_MARK is not set
+    # CONFIG_NETFILTER_XT_MATCH_MULTIPORT is not set
+    # CONFIG_NETFILTER_XT_MATCH_NFACCT is not set
+    # CONFIG_NETFILTER_XT_MATCH_OSF is not set
+    # CONFIG_NETFILTER_XT_MATCH_OWNER is not set
+    # CONFIG_NETFILTER_XT_MATCH_POLICY is not set
+    # CONFIG_NETFILTER_XT_MATCH_PKTTYPE is not set
+    # CONFIG_NETFILTER_XT_MATCH_QUOTA is not set
+    # CONFIG_NETFILTER_XT_MATCH_RATEEST is not set
+    # CONFIG_NETFILTER_XT_MATCH_REALM is not set
+    # CONFIG_NETFILTER_XT_MATCH_RECENT is not set
+    # CONFIG_NETFILTER_XT_MATCH_SCTP is not set
+    # CONFIG_NETFILTER_XT_MATCH_SOCKET is not set
+    # CONFIG_NETFILTER_XT_MATCH_STATISTIC is not set
+    # CONFIG_NETFILTER_XT_MATCH_STRING is not set
+    # CONFIG_NETFILTER_XT_MATCH_TCPMSS is not set
+    # CONFIG_NETFILTER_XT_MATCH_TIME is not set
+    # CONFIG_NETFILTER_XT_MATCH_U32 is not set
     # end of Core Netfilter Configuration
 
     # CONFIG_IP_SET is not set
@@ -1048,9 +1111,17 @@ in
     # CONFIG_NF_TABLES_ARP is not set
     # CONFIG_NF_DUP_IPV4 is not set
     # CONFIG_NF_LOG_ARP is not set
-    # CONFIG_NF_LOG_IPV4 is not set
-    # CONFIG_NF_REJECT_IPV4 is not set
-    # CONFIG_IP_NF_IPTABLES is not set
+    CONFIG_NF_LOG_IPV4=m
+    CONFIG_NF_REJECT_IPV4=m
+    CONFIG_IP_NF_IPTABLES=m
+    # CONFIG_IP_NF_MATCH_AH is not set
+    # CONFIG_IP_NF_MATCH_ECN is not set
+    # CONFIG_IP_NF_MATCH_TTL is not set
+    CONFIG_IP_NF_FILTER=m
+    # CONFIG_IP_NF_TARGET_REJECT is not set
+    # CONFIG_IP_NF_MANGLE is not set
+    # CONFIG_IP_NF_RAW is not set
+    # CONFIG_IP_NF_SECURITY is not set
     # CONFIG_IP_NF_ARPTABLES is not set
     # end of IP: Netfilter Configuration
 
@@ -1060,12 +1131,26 @@ in
     # CONFIG_NF_SOCKET_IPV6 is not set
     # CONFIG_NF_TPROXY_IPV6 is not set
     CONFIG_NF_TABLES_IPV6=y
-    # CONFIG_NFT_DUP_IPV6 is not set
-    # CONFIG_NFT_FIB_IPV6 is not set
-    # CONFIG_NF_DUP_IPV6 is not set
-    # CONFIG_NF_REJECT_IPV6 is not set
+    CONFIG_NFT_DUP_IPV6=m
+    CONFIG_NFT_FIB_IPV6=m
+    CONFIG_NF_DUP_IPV6=m
+    CONFIG_NF_REJECT_IPV6=m
     # CONFIG_NF_LOG_IPV6 is not set
-    # CONFIG_IP6_NF_IPTABLES is not set
+    CONFIG_IP6_NF_IPTABLES=m
+    # CONFIG_IP6_NF_MATCH_AH is not set
+    # CONFIG_IP6_NF_MATCH_EUI64 is not set
+    # CONFIG_IP6_NF_MATCH_FRAG is not set
+    # CONFIG_IP6_NF_MATCH_OPTS is not set
+    # CONFIG_IP6_NF_MATCH_HL is not set
+    # CONFIG_IP6_NF_MATCH_IPV6HEADER is not set
+    # CONFIG_IP6_NF_MATCH_MH is not set
+    # CONFIG_IP6_NF_MATCH_RT is not set
+    # CONFIG_IP6_NF_MATCH_SRH is not set
+    CONFIG_IP6_NF_FILTER=m
+    # CONFIG_IP6_NF_TARGET_REJECT is not set
+    # CONFIG_IP6_NF_MANGLE is not set
+    # CONFIG_IP6_NF_RAW is not set
+    # CONFIG_IP6_NF_SECURITY is not set
     # end of IPv6: Netfilter Configuration
 
     # CONFIG_BPFILTER is not set

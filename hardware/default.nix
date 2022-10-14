@@ -77,7 +77,6 @@
 
   virtualization = {
     enable = true;
-    passthrough.enable = true;
     containers = {
       podman.enable = true;
       docker.enable = true;
