@@ -33,6 +33,7 @@ in rec {
   additionalUserPackages = [
     "steam"
     "jre8"
+    "aseprite"
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: {
