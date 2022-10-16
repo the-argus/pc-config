@@ -79,19 +79,19 @@
     enable = true;
     containers = {
       podman.enable = true;
-      docker.enable = true;
+      docker.enable = false;
     };
   };
 
   services.xserver.displayManager.startx.enable = true;
 
-  services.pipewire.package =
-    (import (pkgs.fetchgit {
-      url = "https://github.com/K900/nixpkgs";
-      rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
-      sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
-    }) {system = "x86_64-linux";})
-    .pipewire;
+  # services.pipewire.package =
+  #   (import (pkgs.fetchgit {
+  #     url = "https://github.com/K900/nixpkgs";
+  #     rev = "092f4eb681a6aee6b50614eedac74629cb48db23";
+  #     sha256 = "1vx4fn4x32m0q91776pww8b9zqlg28x732ghj47lcfgzqdhwbdh4";
+  #   }) {system = "x86_64-linux";})
+  #   .pipewire;
 
   # networking ----------------------------------------------------------------
   networking.interfaces.enp39s0.useDHCP = true;
@@ -99,7 +99,7 @@
   networking.wireless.enable = false;
 
   services.openssh = {
-    enable = true;
+    enable = false;
     permitRootLogin = "no";
   };
   users.users.${username}.openssh.authorizedKeys.keys = [
