@@ -29,7 +29,7 @@ in rec {
   };
   extraExtraSpecialArgs = {};
   extraSpecialArgs = {};
-  additionalModules = [];
+  additionalModules = [./shared];
   additionalUserPackages = [
     "steam"
     "jre8"
@@ -42,7 +42,7 @@ in rec {
       };
     })
   ];
-  hardwareConfiguration = [./hardware];
+  hardwareConfiguration = [./hardware ./shared];
   packageSelections = {
     remotebuild = [
       # "dash"
