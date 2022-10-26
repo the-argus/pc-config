@@ -34,6 +34,7 @@ in rec {
     "steam"
     "jre8"
     "aseprite"
+    "ferium"
   ]; # will be evaluated later
   additionalOverlays = [
     (self: super: {
