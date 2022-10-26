@@ -503,11 +503,11 @@
         "webcord": "webcord"
       },
       "locked": {
-        "lastModified": 1666808212,
-        "narHash": "sha256-0eLqByaST9dk6QXCee+E3PZIIIYMAbBIsDwzQgQr5/E=",
+        "lastModified": 1666828307,
+        "narHash": "sha256-PnIoN+cvziIaIx5zCo2h6mghI26aGrO+/uAPrjVy958=",
         "owner": "the-argus",
         "repo": "nixsys",
-        "rev": "a9f5377282cdfddb585efd6c2d0301fab82791ca",
+        "rev": "65343fdf043dd6f3ebd6e1a58e27b96b204ebe32",
         "type": "github"
       },
       "original": {
