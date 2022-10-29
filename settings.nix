@@ -151,7 +151,7 @@ in rec {
         basekernelsuffix = "xanmod_latest";
       };
     in [
-      # kernel
+      kernel
     ];
     name = "unstable";
   };
