@@ -561,11 +561,11 @@
         "webcord": "webcord"
       },
       "locked": {
-        "lastModified": 1667252267,
-        "narHash": "sha256-qzPWfDF8sBL3SPQWaVDlEuudTcUL1fIgxSZofKBIA50=",
+        "lastModified": 1667252373,
+        "narHash": "sha256-rW//Uvh/8tk0A8orVik/iGlnfyYAFVXm5BkcB8hdwNI=",
         "owner": "the-argus",
         "repo": "nixsys",
-        "rev": "48b018b4b5044efbe8beb22b1be9101f4b7d18ae",
+        "rev": "a632950e9dd315494b981e49799ae591c99e4548",
         "type": "github"
       },
       "original": {
