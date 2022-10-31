@@ -83,7 +83,29 @@
     };
   };
 
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.displayManager.startx.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      terminal = {
+        # only open the greeter on the first tty
+        vt = 1;
+      };
+      default_session = {
+        command = ''
+          ${pkgs.cage}/bin/cage ${pkgs.greetd.gtkgreet}/bin/gtkgreet \
+        '';
+        # --sessions ${pkgs.xorg.xinit}/bin/startx,${pkgs.sway}/bin/sway \
+        # --time \
+        # --issue \
+        # --remember \
+        # --remember-session \
+        # --asterisks \
+        user = username;
+      };
+    };
+  };
 
   services.pipewire.package =
     (import (pkgs.fetchgit {
