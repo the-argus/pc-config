@@ -6,6 +6,7 @@
 }: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
+  theme = "nordicWithGtkNix";
   system = "x86_64-linux";
   username = "argus";
   hostname = "mutant";
@@ -151,7 +152,7 @@ in rec {
         basekernelsuffix = "xanmod_latest";
       };
     in [
-      kernel
+      # kernel
     ];
     name = "unstable";
   };
