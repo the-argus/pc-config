@@ -83,10 +83,10 @@
     };
   };
 
-  # services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.startx.enable = true;
 
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       terminal = {
         # only open the greeter on the first tty
