@@ -36,6 +36,10 @@ in rec {
     "jre8"
     "aseprite"
     {
+      package = "godot_4";
+      set = "unstable";
+    }
+    {
       package = "ferium";
       set = "unstable";
     }
