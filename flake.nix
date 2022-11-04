@@ -15,7 +15,7 @@
     nixpkgs,
     nixpkgs-unstable,
     master-config,
-  } @ inputs: let
+  }: let
     settings = import ./settings.nix {
       inherit nixpkgs nixpkgs-unstable master-config;
     };

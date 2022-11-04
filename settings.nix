@@ -1,9 +1,4 @@
-{
-  nixpkgs,
-  nixpkgs-unstable,
-  master-config,
-  ...
-}: let
+{nixpkgs, ...}: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
   theme = "nordicWithGtkNix";
@@ -45,9 +40,9 @@ in rec {
     }
   ]; # will be evaluated later
   additionalOverlays = [
-    (self: super: {
+    (_: super: {
       steam = super.steam.override {
-        extraLibraries = pkgs: [super.mesa.drivers];
+        extraLibraries = _: [super.mesa.drivers];
       };
     })
   ];
