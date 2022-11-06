@@ -85,8 +85,15 @@
     };
   };
 
-  # services.xserver.displayManager.startx.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.sddm.enable = false;
+  services.xserver.displayManager.lightdm = {
+    enable = false;
+    greeters.mini = {
+      enable = true;
+      user = username;
+    };
+  };
 
   services.greetd = {
     enable = false;
