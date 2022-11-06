@@ -6,7 +6,7 @@
     # ratpoison.enable = true;
     qtile.enable = true;
     i3gaps.enable = true;
-    # gnome.enable = true;
-    plasma.enable = true;
+    gnome.enable = true;
+    # plasma.enable = true;
   };
 }
