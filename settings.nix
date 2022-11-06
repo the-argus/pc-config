@@ -1,4 +1,8 @@
-{nixpkgs, ...}: let
+{
+  nixpkgs,
+  nixpkgs-unstable,
+  ...
+}: let
   override = nixpkgs.lib.attrsets.recursiveUpdate;
 in rec {
   theme = "nordicWithGtkNix";
@@ -30,10 +34,7 @@ in rec {
     "steam"
     "jre8"
     "aseprite"
-    {
-      package = "godot_4";
-      set = "unstable";
-    }
+    "godot_4_custombuild"
     {
       package = "ferium";
       set = "unstable";
@@ -44,6 +45,18 @@ in rec {
       steam = super.steam.override {
         extraLibraries = _: [super.mesa.drivers];
       };
+      godot_4_custombuild = let
+        unstable = import nixpkgs-unstable {
+          localSystem = {inherit system;};
+        };
+      in
+        unstable.godot_4.overrideAttrs (_: {
+          src = super.fetchgit {
+            url = "https://github.com/godotengine/godot";
+            rev = "13f1d8096032bf572d5071c5bf9f61de0a055fed";
+            sha256 = "0icgg7mk0icc5qrcrnbifnv9z2dg34rg543dymp8sffks4nhaaba";
+          };
+        });
     })
   ];
   hardwareConfiguration = [./hardware ./shared];
