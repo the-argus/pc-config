@@ -35,6 +35,7 @@ in rec {
     "jre8"
     "aseprite"
     "godot_4_custombuild"
+    "remoteNeovim"
     {
       package = "ferium";
       set = "unstable";
@@ -57,6 +58,20 @@ in rec {
             sha256 = "0icgg7mk0icc5qrcrnbifnv9z2dg34rg543dymp8sffks4nhaaba";
           };
         });
+
+      remoteNeovim = super.writeShellScriptBin "nvim-remote" ''
+        term_exec=${super.${terminal}}/bin/${terminal}
+
+        server_path=$HOME/.cache/nvim/godot.server.pipe
+
+        if [ -e $server_path ]; then
+            # open file in server
+            nvim --server $server_path --remote "$@"
+        else
+            # start the server if its pipe doesn't exist
+            $term_exec -e nvim --listen $server_path "$@"
+        fi
+      '';
     })
   ];
   hardwareConfiguration = [./hardware ./shared];
