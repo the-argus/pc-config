@@ -12,7 +12,7 @@ in rec {
   useDvorak = false;
   # unfree packages that i explicitly use
   allowedUnfree = [
-    "spotify-unwrapped"
+    "spotify"
     "reaper"
     "slack"
     "steam"
