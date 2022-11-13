@@ -40,6 +40,7 @@ in rec {
       package = "ferium";
       set = "unstable";
     }
+    "protontricks"
   ]; # will be evaluated later
   additionalOverlays = [
     (_: super: {
