@@ -65,17 +65,6 @@
   # systemd.services.plymouth-quit.serviceConfig.ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 5";
 
   # desktops ------------------------------------------------------------------
-  # programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
-  desktops = {
-    enable = true;
-    # sway.enable = true;
-    # awesome.enable = true;
-    # ratpoison.enable = true;
-    qtile.enable = true;
-    # i3gaps.enable = true;
-    gnome.enable = true;
-    # plasma.enable = true;
-  };
 
   virtualization = {
     enable = true;
@@ -85,10 +74,10 @@
     };
   };
 
-  services.xserver.displayManager.startx.enable = false;
+  services.xserver.displayManager.startx.enable = true;
   services.xserver.displayManager.sddm.enable = false;
   services.xserver.displayManager.lightdm = {
-    enable = true;
+    enable = false;
     # greeters.mini = {
     #   enable = true;
     #   user = username;
