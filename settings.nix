@@ -29,7 +29,12 @@ in rec {
   };
   extraExtraSpecialArgs = {};
   extraSpecialArgs = {};
-  additionalModules = [./shared];
+  additionalModules = [
+    ./shared
+    ({...}: {
+      programs.yabridge.enable = false;
+    })
+  ];
   additionalUserPackages = [
     "steam"
     "jre8"
