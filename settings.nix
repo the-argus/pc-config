@@ -60,8 +60,8 @@ in rec {
         unstable.godot_4.overrideAttrs (_: {
           src = super.fetchgit {
             url = "https://github.com/godotengine/godot";
-            rev = "13f1d8096032bf572d5071c5bf9f61de0a055fed";
-            sha256 = "0icgg7mk0icc5qrcrnbifnv9z2dg34rg543dymp8sffks4nhaaba";
+            rev = "6f1d4fd8871155efcb29d115a7168879948e1cf3";
+            sha256 = "13d66gq4s1c2jdshbi03lcc7y43id61kly88if1i58678s41dxyl";
           };
         });
 
