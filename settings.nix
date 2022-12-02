@@ -16,6 +16,7 @@ in rec {
     "reaper"
     "slack"
     "steam"
+    "steam-run"
     "steam-original"
     "discord"
     "ue4"
