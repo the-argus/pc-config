@@ -33,7 +33,7 @@ in rec {
   additionalModules = [
     ./shared
     ({...}: {
-      programs.yabridge.enable = false;
+      programs.yabridge.enable = true;
     })
   ];
   additionalUserPackages = [
