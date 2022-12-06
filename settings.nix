@@ -20,6 +20,7 @@ in rec {
     "steam-original"
     "discord"
     "ue4"
+    "zoom"
   ];
   allowBroken = false;
   plymouth = let
@@ -42,6 +43,7 @@ in rec {
     "aseprite"
     "godot_4_custombuild"
     "remoteNeovim"
+    "zoom"
     {
       package = "ferium";
       set = "unstable";
