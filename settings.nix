@@ -43,7 +43,7 @@ in rec {
     "aseprite"
     "godot_4_custombuild"
     "remoteNeovim"
-    "zoom"
+    "zoom-us"
     {
       package = "ferium";
       set = "unstable";
