@@ -24,6 +24,7 @@
       text = ''
         options vfio-pci ids=10de:1180,10de:0e0a
         softdep nvidia pre: vfio-pci
+        softdep snd_hda_intel pre: vfio-pci
       '';
     };
     "modprobe.d/blacklist-nvidia-nouveau.conf" = {
