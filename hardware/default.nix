@@ -18,20 +18,21 @@
 
   hardware.steam-hardware.enable = true;
 
+  environment.etc = {
+    "modprobe.d/blacklist-nvidia-nouveau.conf" = {
+      text = ''
+        blacklist nouveau
+        blacklist nvidiafb
+        options nouveau modeset=0
+      '';
+    };
+  };
+
   boot = {
     #kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = ["nordrand" "quiet" "systemd.show_status=0" "loglevel=4" "rd.systemd.show_status=auto" "rd.udev.log-priority=3" "rdblacklist=nouveau"];
     # nouveau blacklist
-    environment.etc = {
-      "modprobe.d/blacklist-nvidia-nouveau.conf" = {
-        text = ''
-          blacklist nouveau
-          blacklist nvidiafb
-          options nouveau modeset=0
-        '';
-      };
-    };
     loader = {
       efi = {
         efiSysMountPoint = "/boot/efi";
