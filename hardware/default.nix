@@ -19,6 +19,13 @@
   hardware.steam-hardware.enable = true;
 
   environment.etc = {
+    # softdep isnt really necessary but i dont believe it hurts
+    "vfio.conf" = {
+      text = ''
+        options vfio-pci ids=10de:1180,10de:0e0a
+        softdep nvidia pre: vfio-pci
+      '';
+    };
     "modprobe.d/blacklist-nvidia-nouveau.conf" = {
       text = ''
         blacklist nouveau
