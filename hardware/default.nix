@@ -165,5 +165,6 @@
 
   environment.systemPackages = with pkgs; [
     razergenie
+    virt-manager
   ];
 }
